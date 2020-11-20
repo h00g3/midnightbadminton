@@ -27,7 +27,7 @@ cull_mode = 1
 polygon = PoolVector2Array( 582.793, 43.9783, 515.976, 306.793, 498.158, 623.063, 533.794, 966.059, 809.972, 997.24, 754.301, 669.399, 846.225, 662.328, 881.581, 549.191, 786.121, 513.835, 720.882, 21.7058 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 8, 117.208 )
+extents = Vector2( 8, 110.632 )
 
 [sub_resource type="PhysicsMaterial" id=4]
 friction = 10.0
@@ -35,15 +35,16 @@ bounce = 2.0
 absorbent = true
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 638.726, 46.3899 )
+extents = Vector2( 777.901, 46.3899 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 322.678, 10 )
+extents = Vector2( 378.875, 10 )
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 10, 311.601 )
 
 [node name="MainLevel" type="Node2D"]
+z_as_relative = false
 script = ExtResource( 1 )
 
 [node name="PlayerF" type="KinematicBody2D" parent="."]
@@ -51,7 +52,7 @@ script = ExtResource( 5 )
 speed = 300
 
 [node name="Collider" type="CollisionShape2D" parent="PlayerF"]
-position = Vector2( 150.714, 569.062 )
+position = Vector2( 200, 569.062 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="PlayerF"]
@@ -70,37 +71,50 @@ occluder = SubResource( 2 )
 script = ExtResource( 2 )
 
 [node name="Collider" type="CollisionShape2D" parent="PlayerK"]
-position = Vector2( 1083.18, 571.318 )
+position = Vector2( 1100, 571.318 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="PlayerK"]
 
 [node name="Shuttle" parent="." instance=ExtResource( 3 )]
 
-[node name="Netz" type="StaticBody2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Shuttle"]
 visible = false
+current = true
+limit_left = 0
+limit_top = -22
+limit_right = 1440
+limit_bottom = 100
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+drag_margin_left = 0.01
+drag_margin_right = 0.01
+
+[node name="Netz" type="StaticBody2D" parent="."]
 
 [node name="Collider" type="CollisionShape2D" parent="Netz"]
-position = Vector2( 635.981, 529.756 )
+position = Vector2( 715, 529.756 )
 shape = SubResource( 3 )
 
 [node name="Boden" type="StaticBody2D" parent="."]
 physics_material_override = SubResource( 4 )
 
 [node name="Collider" type="CollisionShape2D" parent="Boden"]
-position = Vector2( 635.806, 680.344 )
+position = Vector2( 698.146, 680.344 )
 shape = SubResource( 5 )
 
 [node name="Links" type="Area2D" parent="Boden"]
 
 [node name="Collider" type="CollisionShape2D" parent="Boden/Links"]
-position = Vector2( 300, 643.094 )
+position = Vector2( 328.166, 643.094 )
 shape = SubResource( 6 )
 
 [node name="Rechts" type="Area2D" parent="Boden"]
 
 [node name="Collider" type="CollisionShape2D" parent="Boden/Rechts"]
-position = Vector2( 960, 643.094 )
+position = Vector2( 1100, 643.094 )
 shape = SubResource( 6 )
 
 [node name="WandL" type="StaticBody2D" parent="."]
@@ -111,13 +125,12 @@ position = Vector2( -1, 348.627 )
 shape = SubResource( 7 )
 
 [node name="WandL2" type="CollisionShape2D" parent="WandL"]
-position = Vector2( 1276.21, 343.87 )
+position = Vector2( 1440, 343.87 )
 shape = SubResource( 7 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-offset = Vector2( 640, 360 )
-transform = Transform2D( 1, 0, 0, 1, 640, 360 )
-follow_viewport_enable = true
+offset = Vector2( 720, 360 )
+transform = Transform2D( 1, 0, 0, 1, 720, 360 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
@@ -185,10 +198,13 @@ rect_min_size = Vector2( 0, 15 )
 rect_scale = Vector2( 2, 2 )
 
 [node name="Kscore" type="Label" parent="Scoreboard"]
-margin_left = 1240.0
+margin_left = 1388.0
 margin_top = 15.0
-margin_right = 1280.0
+margin_right = 1428.0
 margin_bottom = 29.0
 rect_scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="body_entered" from="Boden/Links" to="." method="_on_Links_body_entered"]
 [connection signal="body_entered" from="Boden/Rechts" to="." method="_on_Rechts_body_entered"]
