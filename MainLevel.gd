@@ -18,9 +18,10 @@ func abschlag(player):
 	
 	if player == fanny:
 		shuttle.position = fanny.position + Vector2(50,-50)
-		print ("asdasd")
+		print ("Abschlag Fanny")
 	if player == kenny:
 		shuttle.position = fanny.position + Vector2(-50,-50)
+		print ("Abschlag Kenny")
 	else:
 		return
 	
