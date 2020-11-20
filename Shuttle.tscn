@@ -3,15 +3,15 @@
 [ext_resource path="res://Shuttle.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/shuttle_alpha.png" type="Texture" id=2]
 
-[sub_resource type="PhysicsMaterial" id=3]
+[sub_resource type="PhysicsMaterial" id=1]
 bounce = 3.0
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=2]
 
 [node name="Shuttle" type="RigidBody2D"]
 position = Vector2( 755, 0 )
 mass = 70.0
-physics_material_override = SubResource( 3 )
+physics_material_override = SubResource( 1 )
 gravity_scale = 3.0
 linear_damp = 0.7
 angular_damp = 10.0
@@ -19,7 +19,7 @@ applied_torque = 100.0
 script = ExtResource( 1 )
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = 4.71239

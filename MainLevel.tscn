@@ -122,6 +122,7 @@ follow_viewport_enable = true
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Blue_BG" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 2, 0 )
 texture = ExtResource( 6 )
 
 [node name="Light2D" type="Light2D" parent="ParallaxBackground/ParallaxLayer/Blue_BG"]
