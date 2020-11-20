@@ -1,22 +1,22 @@
 [gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://MainLevel.gd" type="Script" id=1]
-[ext_resource path="res://PlayerK.gd" type="Script" id=2]
-[ext_resource path="res://Shuttle.tscn" type="PackedScene" id=3]
-[ext_resource path="res://PlayerF.gd" type="Script" id=5]
-[ext_resource path="res://Sprites/LEVEL1/blue_BG.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/LEVEL1/Haeuser.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/LEVEL1/stars.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/LEVEL1/Lampen.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/LEVEL1/Wahrzeichen.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/LEVEL1/shadow_street.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/LEVEL1/zaun.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/LEVEL1/horizont.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/LEVEL1/netz.png" type="Texture" id=14]
-[ext_resource path="res://RigPolysK.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Sprites/LEVEL1/licht.png" type="Texture" id=16]
-[ext_resource path="res://Sprites/lights_v2.png" type="Texture" id=17]
-[ext_resource path="res://Sprites/lights_v2_blobs.png" type="Texture" id=18]
+[ext_resource path="res://scenes/RigPolysK.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Shuttle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/MainLevel.gd" type="Script" id=3]
+[ext_resource path="res://src/PlayerF.gd" type="Script" id=4]
+[ext_resource path="res://src/PlayerK.gd" type="Script" id=5]
+[ext_resource path="res://Sprites/lights_v2_blobs.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/LEVEL1/Lampen.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/LEVEL1/licht.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/LEVEL1/stars.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/LEVEL1/blue_BG.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/LEVEL1/Haeuser.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/LEVEL1/horizont.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/LEVEL1/Wahrzeichen.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/lights_v2.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/LEVEL1/shadow_street.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/LEVEL1/netz.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/LEVEL1/zaun.png" type="Texture" id=17]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 19.0
@@ -44,10 +44,10 @@ extents = Vector2( 322.678, 10 )
 extents = Vector2( 10, 311.601 )
 
 [node name="MainLevel" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource( 3 )
 
 [node name="PlayerF" type="KinematicBody2D" parent="."]
-script = ExtResource( 5 )
+script = ExtResource( 4 )
 speed = 300
 
 [node name="Collider" type="CollisionShape2D" parent="PlayerF"]
@@ -56,7 +56,7 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="PlayerF"]
 
-[node name="RigPolysK" parent="PlayerF" instance=ExtResource( 15 )]
+[node name="RigPolysK" parent="PlayerF" instance=ExtResource( 1 )]
 visible = false
 position = Vector2( 0, 480 )
 scale = Vector2( 0.2, 0.2 )
@@ -67,7 +67,7 @@ z_as_relative = false
 occluder = SubResource( 2 )
 
 [node name="PlayerK" type="KinematicBody2D" parent="."]
-script = ExtResource( 2 )
+script = ExtResource( 5 )
 
 [node name="Collider" type="CollisionShape2D" parent="PlayerK"]
 position = Vector2( 1083.18, 571.318 )
@@ -75,7 +75,7 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="PlayerK"]
 
-[node name="Shuttle" parent="." instance=ExtResource( 3 )]
+[node name="Shuttle" parent="." instance=ExtResource( 2 )]
 
 [node name="Netz" type="StaticBody2D" parent="."]
 visible = false
@@ -123,11 +123,11 @@ follow_viewport_enable = true
 
 [node name="Blue_BG" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 2, 0 )
-texture = ExtResource( 6 )
+texture = ExtResource( 10 )
 
 [node name="Light2D" type="Light2D" parent="ParallaxBackground/ParallaxLayer/Blue_BG"]
 visible = false
-texture = ExtResource( 17 )
+texture = ExtResource( 14 )
 color = Color( 0.968627, 0.87451, 0.592157, 1 )
 energy = 1.49
 mode = 2
@@ -135,40 +135,40 @@ shadow_enabled = true
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer/Blue_BG/Light2D"]
 z_index = 6
-texture = ExtResource( 18 )
+texture = ExtResource( 6 )
 
 [node name="Stars" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 
 [node name="Horizont" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource( 13 )
+texture = ExtResource( 12 )
 
 [node name="Wahrzeichen" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource( 10 )
+texture = ExtResource( 13 )
 
 [node name="Haeuser" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource( 7 )
+texture = ExtResource( 11 )
 
 [node name="Lampen" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 z_index = 1
-texture = ExtResource( 9 )
+texture = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer/Lampen"]
 visible = false
 show_behind_parent = true
-texture = ExtResource( 16 )
+texture = ExtResource( 8 )
 
 [node name="Shadow_street" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 z_index = 2
-texture = ExtResource( 11 )
+texture = ExtResource( 15 )
 
 [node name="Zaun" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 z_index = 2
-texture = ExtResource( 12 )
+texture = ExtResource( 17 )
 
 [node name="Netz" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 z_index = 1
-texture = ExtResource( 14 )
+texture = ExtResource( 16 )
 
 [node name="Scoreboard" type="Control" parent="."]
 margin_right = 40.0
