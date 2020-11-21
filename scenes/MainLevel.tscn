@@ -76,6 +76,7 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="PlayerK"]
 
 [node name="Shuttle" parent="." instance=ExtResource( 2 )]
+mass = 700.0
 
 [node name="Netz" type="StaticBody2D" parent="."]
 visible = false

@@ -48,26 +48,22 @@ func abschlag(player):
 	print("shuttle after score: %s" % shuttleTransform)
 
 func service(player):
-	var shuttleBodyId = shuttle.get_rid()
-	#PhysicServer.body_get_direct_state (shuttleBodyId)
-	#shuttle.integrate_forces(state)
-	shuttle.set_sleeping(true)
-	shuttle.set_global_position(player.position + serviceOffset)
-#	shuttle.sleeping = true
+	var position = player.position + serviceOffset
+	shuttle.hitGround(position)
 
 func playerRightpoint():
 	playerRightscore+=1
 	if playerRightscore < winscore:
 		abschlag(playerLeft)
-	else:
-		win(playerRight)
+#	else:
+#		win(playerRight)
 
 func playerLeftpoint():
 	playerLeftscore+=1
 	if playerLeftscore < winscore:
 		abschlag(playerRight)
-	else:
-		win(playerLeft)
+#	else:
+#		win(playerLeft)
 
 #func score(playerscore):
 #	playerscore++
