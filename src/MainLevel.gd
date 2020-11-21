@@ -6,11 +6,11 @@ var collisionShapeLeft
 var collisionShapeRight
 onready var shuttle = $Shuttle
 
-onready var serviceOffset = Vector2(0,-100)
+onready var serviceOffset = Vector2(0,-200)
 
 onready var playerLeftscore = 0
 onready var playerRightscore = 0
-onready var winscore = 9
+onready var winscore = 10
 
 func _ready():
 	collisionShapeLeft = getPlayerCollisionShape(playerLeft)
@@ -25,19 +25,6 @@ func abschlag(player):
 	#shuttle = preload("res://Shuttle.tscn").instance()
 	#shuttle.sleeping = true
 	
-	
-	var shuttleTransform = shuttle.get_transform()
-	
-#	print("playerLeft: %d, %d" % [playerLeft.position.x, playerLeft.position.y])
-#	print("playerRight: %d, %d" % [playerRight.position.x, playerRight.position.y])
-#	print("shuttle before score: %d, %d" % [shuttle.position.x, shuttle.position.y])
-	
-#	print("playerLeft: %s" % playerLeft.get_child_count())
-#	print("playerRight: %s" % playerRight.get_child_count())
-	debugPlayer("left", playerLeft)
-	debugPlayer("right", playerRight)
-	print("shuttle before score: %s" % shuttleTransform)
-	
 	if player == playerLeft:
 		service(collisionShapeRight)
 	elif player == playerRight:
@@ -45,8 +32,6 @@ func abschlag(player):
 	else:
 		return
 	
-	print("shuttle after score: %s" % shuttleTransform)
-
 func service(player):
 	var position = player.position + serviceOffset
 	shuttle.hitGround(position)
@@ -55,15 +40,15 @@ func playerRightpoint():
 	playerRightscore+=1
 	if playerRightscore < winscore:
 		abschlag(playerLeft)
-#	else:
-#		win(playerRight)
+	else:
+		win(playerRight)
 
 func playerLeftpoint():
 	playerLeftscore+=1
 	if playerLeftscore < winscore:
 		abschlag(playerRight)
-#	else:
-#		win(playerLeft)
+	else:
+		win(playerLeft)
 
 #func score(playerscore):
 #	playerscore++
@@ -90,12 +75,6 @@ func _on_Links_body_entered(body):
 
 func isShuttle(body):
 	return body.get_name() == "Shuttle"
-
-func debugPlayer(side, player):
-	for child in player.get_children():
-		if child is CollisionShape2D:
-			print((child as CollisionShape2D).transform)
-#	print("%s: %s" % [side, player.get_child_count()])
 
 func getPlayerCollisionShape(player):
 	for child in player.get_children():
