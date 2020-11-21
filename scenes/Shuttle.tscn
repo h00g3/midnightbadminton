@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Shuttle.gd" type="Script" id=1]
+[ext_resource path="res://src/Shuttle.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/shuttle_alpha.png" type="Texture" id=2]
 [ext_resource path="res://abschlag_gradient.tres" type="Gradient" id=3]
 
