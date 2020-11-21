@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Sprites/fanny.png" type="Texture" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Torso" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 369.768, 27, 140, 290.969 )
+
+[node name="armR" type="Sprite" parent="Torso"]
+position = Vector2( -56.0665, 15.749 )
+z_index = 2
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 42.794, 13.881, 70, 300 )
+
+[node name="bat" type="Sprite" parent="Torso/armR"]
+position = Vector2( 122.672, 100.432 )
+rotation = 1.36729
+z_index = 1
+z_as_relative = false
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 424.587, 336.908, 122, 335 )
+
+[node name="armL" type="Sprite" parent="Torso"]
+position = Vector2( 63.5, 30.5 )
+z_index = -1
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 197.368, 31.802, 90, 310 )
+
+[node name="legR" type="Sprite" parent="Torso"]
+position = Vector2( 78.0254, 313.661 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 300.228, 192.066, 122, 480 )
+
+[node name="legL" type="Sprite" parent="Torso"]
+position = Vector2( -42.8966, 316.354 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 91.876, 189.33, 123.338, 480 )
+
+[node name="head" type="Sprite" parent="Torso"]
+position = Vector2( -7.5892, -202.303 )
+z_index = -1
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 600, 250.703, 170, 170 )
