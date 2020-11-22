@@ -15,6 +15,11 @@ func _physics_process(delta):
 	if(not hitGround):
 		var movecurve = get_linear_velocity().normalized()
 		self.rotation = movecurve.angle()
+		$Schlagpartikel.direction = -movecurve
+		var shuttle_speed = get_linear_velocity().length()
+		$Schlagpartikel.amount = shuttle_speed/10
+		$Schlagpartikel.initial_velocity = shuttle_speed
+		$Schlagpartikel.emitting = true
 	else:
 		timeSpentOnGround += delta
 		if(timeSpentOnGround > 1):
@@ -30,6 +35,7 @@ func hitGround(position):
 	cancelAllForces()
 	hitGround = true
 	servicePosition = position
+
 
 func setServicePosition():
 	set_sleeping(true)

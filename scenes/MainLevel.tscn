@@ -3,7 +3,7 @@
 [ext_resource path="res://src/MainLevel.gd" type="Script" id=1]
 [ext_resource path="res://src/PlayerK.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Shuttle.tscn" type="PackedScene" id=3]
-[ext_resource path="res://FannyTest.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/FannyTest.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/PlayerF.gd" type="Script" id=5]
 [ext_resource path="res://Sprites/LEVEL1/blue_BG.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/LEVEL1/Haeuser.png" type="Texture" id=7]
@@ -18,6 +18,7 @@
 [ext_resource path="res://Sprites/LEVEL1/licht.png" type="Texture" id=16]
 [ext_resource path="res://Sprites/lights_v2.png" type="Texture" id=17]
 [ext_resource path="res://Sprites/lights_v2_blobs.png" type="Texture" id=18]
+
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 23.7809
