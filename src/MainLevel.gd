@@ -4,6 +4,7 @@ onready var players = {}
 onready var shuttle = $Shuttle
 onready var serviceOffset = Vector2(0,-200)
 onready var winscore = 10
+onready var start_side = Player.Side.LEFT
 
 func _ready():
 	add_player("Fanny", $PlayerF, Player.Side.LEFT)
