@@ -32,6 +32,7 @@ animation = "Winning"
 advance_condition = "is_on_floor()"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=9]
+auto_advance = true
 xfade_time = 3.0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=10]
@@ -98,8 +99,8 @@ region_enabled = true
 region_rect = Rect2( 421.681, 20.085, 140, 290.969 )
 
 [node name="armR" type="Sprite" parent="Torso"]
-position = Vector2( -65.7465, -105.639 )
-rotation = -0.0120916
+position = Vector2( -65.9323, -106.055 )
+rotation = -0.0101901
 z_index = 2
 texture = ExtResource( 1 )
 offset = Vector2( 0, 120 )
@@ -117,8 +118,8 @@ region_enabled = true
 region_rect = Rect2( 424.587, 336.908, 122, 335 )
 
 [node name="armL" type="Sprite" parent="Torso"]
-position = Vector2( 57.2559, -108.682 )
-rotation = -0.00985471
+position = Vector2( 57.2559, -108.879 )
+rotation = -0.0156834
 z_index = -1
 texture = ExtResource( 1 )
 offset = Vector2( 5, 130 )
@@ -140,7 +141,7 @@ region_enabled = true
 region_rect = Rect2( 91.876, 189.33, 123.338, 480 )
 
 [node name="head" type="Sprite" parent="Torso"]
-position = Vector2( -1.60145, -138.65 )
+position = Vector2( -1.77861, -139.627 )
 z_index = -1
 texture = ExtResource( 1 )
 offset = Vector2( 0, -60 )
