@@ -37,3 +37,13 @@ func set_side(_side):
 func get_side():
 	return side
 
+func get_body_position():
+	var collisionShape = getPlayerCollisionShape()
+	return collisionShape.position
+
+func getPlayerCollisionShape():
+	for child in physics_body.get_children():
+		if child is CollisionShape2D:
+			return child
+	push_error ( "no collision shape found for player %s" % name)
+
