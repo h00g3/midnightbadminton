@@ -37,8 +37,3 @@ func set_side(_side):
 func get_side():
 	return side
 
-func other_side():
-	if(side == Side.LEFT):
-		return Side.RIGHT
-	else:
-		return Side.LEFT
