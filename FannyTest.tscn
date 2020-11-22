@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Sprites/fanny.png" type="Texture" id=1]
 [ext_resource path="res://anim/Walk_Fanny.tres" type="Animation" id=2]
@@ -8,6 +8,88 @@
 [ext_resource path="res://anim/Winning_Fanny.tres" type="Animation" id=6]
 [ext_resource path="res://anim/Lose_Fanny.tres" type="Animation" id=7]
 
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "Jump"
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "Lose"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "Schlag"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "WalkR"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "Winning"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+advance_condition = "is_on_floor()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+xfade_time = 3.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+switch_mode = 1
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+priority = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+priority = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=23]
+states/Idle/node = SubResource( 1 )
+states/Idle/position = Vector2( 519, 170 )
+states/Jump/node = SubResource( 2 )
+states/Jump/position = Vector2( 998, 146 )
+states/Lose/node = SubResource( 3 )
+states/Lose/position = Vector2( 329, 102 )
+states/Schlag/node = SubResource( 4 )
+states/Schlag/position = Vector2( 693, 46 )
+states/WalkR/node = SubResource( 5 )
+states/WalkR/position = Vector2( 841, 272 )
+states/Winning/node = SubResource( 6 )
+states/Winning/position = Vector2( 335, 234 )
+transitions = [ "Idle", "Jump", SubResource( 7 ), "Idle", "WalkR", SubResource( 8 ), "WalkR", "Idle", SubResource( 9 ), "WalkR", "Jump", SubResource( 10 ), "Jump", "WalkR", SubResource( 11 ), "Jump", "Idle", SubResource( 12 ), "Idle", "Schlag", SubResource( 13 ), "Schlag", "Idle", SubResource( 14 ), "Schlag", "Jump", SubResource( 15 ), "Jump", "Schlag", SubResource( 16 ), "Schlag", "WalkR", SubResource( 17 ), "WalkR", "Schlag", SubResource( 18 ), "Idle", "Lose", SubResource( 19 ), "Idle", "Winning", SubResource( 20 ), "Winning", "Idle", SubResource( 21 ), "Lose", "Idle", SubResource( 22 ) ]
+start_node = "Idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=24]
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Torso" type="Sprite" parent="."]
@@ -16,8 +98,8 @@ region_enabled = true
 region_rect = Rect2( 421.681, 20.085, 140, 290.969 )
 
 [node name="armR" type="Sprite" parent="Torso"]
-position = Vector2( -65.4324, -104.936 )
-rotation = -0.0153065
+position = Vector2( -65.7465, -105.639 )
+rotation = -0.0120916
 z_index = 2
 texture = ExtResource( 1 )
 offset = Vector2( 0, 120 )
@@ -35,7 +117,8 @@ region_enabled = true
 region_rect = Rect2( 424.587, 336.908, 122, 335 )
 
 [node name="armL" type="Sprite" parent="Torso"]
-position = Vector2( 57.2559, -108.348 )
+position = Vector2( 57.2559, -108.682 )
+rotation = -0.00985471
 z_index = -1
 texture = ExtResource( 1 )
 offset = Vector2( 5, 130 )
@@ -57,7 +140,7 @@ region_enabled = true
 region_rect = Rect2( 91.876, 189.33, 123.338, 480 )
 
 [node name="head" type="Sprite" parent="Torso"]
-position = Vector2( -1.23245, -136.616 )
+position = Vector2( -1.60145, -138.65 )
 z_index = -1
 texture = ExtResource( 1 )
 offset = Vector2( 0, -60 )
@@ -71,3 +154,10 @@ anims/Lose = ExtResource( 7 )
 anims/Schlag = ExtResource( 4 )
 anims/WalkR = ExtResource( 2 )
 anims/Winning = ExtResource( 6 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 23 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 24 )
+parameters/conditions/is_on_floor() = false

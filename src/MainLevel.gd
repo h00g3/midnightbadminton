@@ -12,17 +12,20 @@ func _ready():
 func add_player(name, physics_body, side):
 	players[side] = load("res://src/Player.gd").new(name, physics_body, side)
 
-func _physics_process(delta):
+func _process(delta):
 	if Input.is_action_pressed("restart") :
 		get_tree().reload_current_scene()
+	show_scores()
 
 func _on_Rechts_body_entered(body):
 	if isShuttle(body):
 		score(Player.Side.LEFT)
+		players[Player.Side.LEFT].get_physics_body().Cheer()
 
 func _on_Links_body_entered(body):
 	if isShuttle(body):
 		score(Player.Side.RIGHT)
+		players[Player.Side.LEFT].get_physics_body().Sad()
 
 func score(side):
 	var player = players[side]
@@ -53,9 +56,6 @@ func win(side):
 func show_scores():
 	$Scoreboard/Fscore.text = str(players[Player.Side.LEFT].score)
 	$Scoreboard/Kscore.text = str(players[Player.Side.RIGHT].score)
-
-func _process(delta):
-	show_scores()
 
 func isShuttle(body):
 	return body.get_name() == "Shuttle"

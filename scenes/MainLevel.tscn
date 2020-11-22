@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://src/MainLevel.gd" type="Script" id=1]
 [ext_resource path="res://src/PlayerK.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Shuttle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://FannyTest.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/PlayerF.gd" type="Script" id=5]
 [ext_resource path="res://Sprites/LEVEL1/blue_BG.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/LEVEL1/Haeuser.png" type="Texture" id=7]
@@ -19,12 +20,16 @@
 [ext_resource path="res://Sprites/lights_v2_blobs.png" type="Texture" id=18]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 19.0
+radius = 23.7809
 height = 80.0
 
 [sub_resource type="OccluderPolygon2D" id=2]
 cull_mode = 1
 polygon = PoolVector2Array( 582.793, 43.9783, 515.976, 306.793, 498.158, 623.063, 533.794, 966.059, 809.972, 997.24, 754.301, 669.399, 846.225, 662.328, 881.581, 549.191, 786.121, 513.835, 720.882, 21.7058 )
+
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 66.2908
+height = 97.1746
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 0, 100, 100, -100, 100 )
@@ -70,6 +75,19 @@ visible = false
 z_as_relative = false
 occluder = SubResource( 2 )
 
+[node name="Node2D" parent="PlayerF" instance=ExtResource( 4 )]
+position = Vector2( 197.808, 564.445 )
+scale = Vector2( 0.2, 0.2 )
+
+[node name="Area2D" type="Area2D" parent="PlayerF"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerF/Area2D"]
+position = Vector2( 199.068, 566.965 )
+shape = SubResource( 9 )
+one_way_collision = true
+
 [node name="PlayerK" type="KinematicBody2D" parent="."]
 script = ExtResource( 2 )
 
@@ -85,6 +103,8 @@ position = Vector2( 1096.29, 486.331 )
 polygon = PoolVector2Array( -20.6249, 18.8737, 9.25793, 15.1656, 39.5302, 22.7337, 68.1206, 49.6424, -83.5579, 115.449, -76.5135, 73.1875, -63.4796, 49.6424, -46.2748, 31.9161 )
 
 [node name="Shuttle" parent="." instance=ExtResource( 3 )]
+position = Vector2( 600, 0 )
+collision_layer = 3
 
 [node name="Camera2D" type="Camera2D" parent="Shuttle"]
 current = true
@@ -213,5 +233,6 @@ rect_scale = Vector2( 2, 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="body_entered" from="PlayerF/Area2D" to="PlayerF" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Boden/Links" to="." method="_on_Links_body_entered"]
 [connection signal="body_entered" from="Boden/Rechts" to="." method="_on_Rechts_body_entered"]
