@@ -46,9 +46,8 @@ func other_side(side):
 	
 
 func abschlag(player):
-	var collisionShape = getPlayerCollisionShape(player.physics_body)
-	var position = collisionShape.position + serviceOffset
-	shuttle.hitGround(position)
+	var shuttle_service_position = player.get_body_position() + serviceOffset
+	shuttle.hitGround(shuttle_service_position)
 
 func win(side):
 	print ("%s wins!" % players[side].name)
@@ -61,8 +60,4 @@ func show_scores():
 func isShuttle(body):
 	return body.get_name() == "Shuttle"
 
-func getPlayerCollisionShape(player):
-	for child in player.get_children():
-		if child is CollisionShape2D:
-			return child
-	push_error ( "no collision shape found for player " % player)
+
