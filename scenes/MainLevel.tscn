@@ -66,8 +66,6 @@ speed = 300
 position = Vector2( 200, 569.062 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="AnimatedSprite" parent="PlayerF"]
-
 [node name="Node2D" parent="PlayerF" instance=ExtResource( 4 )]
 position = Vector2( 197.808, 564.445 )
 scale = Vector2( 0.2, 0.2 )
@@ -87,8 +85,6 @@ script = ExtResource( 2 )
 [node name="Collider" type="CollisionShape2D" parent="PlayerK"]
 position = Vector2( 1100, 564.173 )
 shape = SubResource( 3 )
-
-[node name="Sprite" type="AnimatedSprite" parent="PlayerK"]
 
 [node name="Node2D" parent="PlayerK" instance=ExtResource( 19 )]
 position = Vector2( 1099.56, 568.041 )
