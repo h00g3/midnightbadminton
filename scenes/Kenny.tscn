@@ -82,7 +82,7 @@ states/Idle/position = Vector2( 497, 162 )
 states/Jump/node = SubResource( 2 )
 states/Jump/position = Vector2( 968, 162 )
 states/Lose/node = SubResource( 3 )
-states/Lose/position = Vector2( 192, 247 )
+states/Lose/position = Vector2( 193, 247 )
 states/Schlag/node = SubResource( 4 )
 states/Schlag/position = Vector2( 693, 46 )
 states/Walking/node = SubResource( 5 )
@@ -102,8 +102,8 @@ region_enabled = true
 region_rect = Rect2( 365, 7, 215, 390 )
 
 [node name="armL" type="Sprite" parent="Torso"]
-position = Vector2( 74.8578, -95.0598 )
-rotation = -0.0390232
+position = Vector2( 75.0915, -95.5272 )
+rotation = -0.0415946
 z_index = -1
 z_as_relative = false
 texture = ExtResource( 1 )
@@ -112,8 +112,8 @@ region_enabled = true
 region_rect = Rect2( 165.679, 0, 122.111, 387.364 )
 
 [node name="armR" type="Sprite" parent="Torso"]
-position = Vector2( -80.7773, -113.955 )
-rotation = 0.00400756
+position = Vector2( -80.7773, -114.189 )
+rotation = 0.00427162
 z_index = 2
 z_as_relative = false
 texture = ExtResource( 1 )
@@ -146,7 +146,7 @@ region_enabled = true
 region_rect = Rect2( 74, 239.846, 119, 449.154 )
 
 [node name="head" type="Sprite" parent="Torso"]
-position = Vector2( 2.7521, -186.489 )
+position = Vector2( 2.98337, -186.026 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, -70 )
 region_enabled = true
