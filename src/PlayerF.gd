@@ -16,7 +16,7 @@ var gravity : int = 1000
 # Doppelsprung-Kontrollvariable, Abschlag
 onready var doublejump_zaehler : bool = false
 onready var abschlag_fanny : bool = true
-onready var shuttle = get_parent().get_node("Shuttle")
+onready var shuttle = load("res://scenes/Shuttle.tscn")
 
 onready var state_machine = $Node2D/AnimationTree.get("parameters/playback")
 

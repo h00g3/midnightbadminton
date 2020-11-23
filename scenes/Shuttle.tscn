@@ -53,4 +53,3 @@ initial_velocity_random = 0.64
 scale_amount = 2.0
 scale_amount_random = 0.29
 color_ramp = ExtResource( 3 )
-[connection signal="body_entered" from="." to="." method="_on_Shuttle_body_entered"]

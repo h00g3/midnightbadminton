@@ -1,8 +1,7 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://src/MainLevel.gd" type="Script" id=1]
 [ext_resource path="res://src/PlayerK.gd" type="Script" id=2]
-[ext_resource path="res://scenes/Shuttle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/FannyTest.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/PlayerF.gd" type="Script" id=5]
 [ext_resource path="res://Sprites/LEVEL1/blue_BG.png" type="Texture" id=6]
@@ -102,23 +101,6 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerK/Area2D"]
 position = Vector2( 1096.02, 564.271 )
 shape = SubResource( 4 )
-
-[node name="Shuttle" parent="." instance=ExtResource( 3 )]
-position = Vector2( 600, 0 )
-collision_layer = 3
-
-[node name="Camera2D" type="Camera2D" parent="Shuttle"]
-current = true
-limit_left = 0
-limit_top = -22
-limit_right = 1440
-limit_bottom = 100
-limit_smoothed = true
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-smoothing_enabled = true
-drag_margin_left = 0.01
-drag_margin_right = 0.01
 
 [node name="Netz" type="StaticBody2D" parent="."]
 
