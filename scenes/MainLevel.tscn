@@ -23,15 +23,15 @@
 radius = 23.7809
 height = 80.0
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 66.2908
 height = 97.1746
 
-[sub_resource type="CapsuleShape2D" id=10]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 21.7361
 height = 93.4232
 
-[sub_resource type="CapsuleShape2D" id=12]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 73.077
 height = 108.023
 
@@ -52,7 +52,7 @@ extents = Vector2( 378.875, 10 )
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 10, 451.657 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 747.203, 10 )
 
 [node name="MainLevel" type="Node2D"]
@@ -79,7 +79,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerF/Area2D"]
 position = Vector2( 199.068, 566.965 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 one_way_collision = true
 
 [node name="PlayerK" type="KinematicBody2D" parent="."]
@@ -87,7 +87,7 @@ script = ExtResource( 2 )
 
 [node name="Collider" type="CollisionShape2D" parent="PlayerK"]
 position = Vector2( 1100, 564.173 )
-shape = SubResource( 10 )
+shape = SubResource( 3 )
 
 [node name="Sprite" type="AnimatedSprite" parent="PlayerK"]
 
@@ -101,7 +101,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerK/Area2D"]
 position = Vector2( 1096.02, 564.271 )
-shape = SubResource( 12 )
+shape = SubResource( 4 )
 
 [node name="Shuttle" parent="." instance=ExtResource( 3 )]
 position = Vector2( 600, 0 )
@@ -157,7 +157,7 @@ shape = SubResource( 9 )
 
 [node name="Decke" type="CollisionShape2D" parent="WandL"]
 position = Vector2( 721.814, -273.824 )
-shape = SubResource( 11 )
+shape = SubResource( 10 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 offset = Vector2( 720, 360 )

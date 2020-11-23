@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "",
+"class": "GitAPI",
+"language": "NativeScript",
+"path": "res://git_api.gdns"
+}, {
 "base": "Reference",
 "class": "Player",
 "language": "GDScript",
 "path": "res://src/Player.gd"
 } ]
 _global_script_class_icons={
+"GitAPI": "",
 "Player": ""
 }
 
@@ -30,6 +36,10 @@ window/size/width=1440
 window/size/height=765
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[gdnative]
+
+singletons=[ "res://git_api.gdnlib" ]
 
 [input]
 
