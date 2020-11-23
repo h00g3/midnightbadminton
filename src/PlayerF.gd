@@ -16,16 +16,13 @@ var gravity : int = 1000
 # Doppelsprung-Kontrollvariable, Abschlag
 onready var doublejump_zaehler : bool = false
 onready var abschlag_fanny : bool = true
-onready var shuttle = get_parent().get_node("Shuttle")
+onready var shuttle = load("res://scenes/Shuttle.tscn")
 
 onready var state_machine = $Node2D/AnimationTree.get("parameters/playback")
 
 func _physics_process(delta):
 	vel.x = 0
 	_Steuerung(delta)
-
-func free_shuttle():
-	shuttle.sleeping = false
 
 func _Steuerung(delta):	
 	
@@ -42,8 +39,6 @@ func _Steuerung(delta):
 		vel.y -= jumpForce
 		Jump()
 		doublejump_zaehler = true
-		if abschlag_fanny == true:
-			free_shuttle()
 	if Input.is_action_just_pressed("2_up") and is_on_floor() == false :
 		if doublejump_zaehler == true :
 			vel.y -= jumpForce

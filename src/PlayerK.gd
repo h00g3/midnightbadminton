@@ -32,3 +32,9 @@ func _Steuerung(delta):
 	vel = move_and_slide(vel, Vector2.UP)
 	#gravity
 	vel.y += gravity * delta
+
+func Cheer():
+	pass
+
+func Sad():
+	pass
