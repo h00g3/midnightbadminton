@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://src/MainLevel.gd" type="Script" id=1]
 [ext_resource path="res://src/PlayerK.gd" type="Script" id=2]
@@ -14,25 +14,26 @@
 [ext_resource path="res://Sprites/LEVEL1/zaun.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/LEVEL1/horizont.png" type="Texture" id=13]
 [ext_resource path="res://Sprites/LEVEL1/netz.png" type="Texture" id=14]
-[ext_resource path="res://scenes/RigPolysK.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Sprites/LEVEL1/licht.png" type="Texture" id=16]
 [ext_resource path="res://Sprites/lights_v2.png" type="Texture" id=17]
 [ext_resource path="res://Sprites/lights_v2_blobs.png" type="Texture" id=18]
+[ext_resource path="res://scenes/Kenny.tscn" type="PackedScene" id=19]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 23.7809
 height = 80.0
 
-[sub_resource type="OccluderPolygon2D" id=2]
-cull_mode = 1
-polygon = PoolVector2Array( 582.793, 43.9783, 515.976, 306.793, 498.158, 623.063, 533.794, 966.059, 809.972, 997.24, 754.301, 669.399, 846.225, 662.328, 881.581, 549.191, 786.121, 513.835, 720.882, 21.7058 )
-
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 66.2908
 height = 97.1746
 
-[sub_resource type="ConvexPolygonShape2D" id=4]
-points = PoolVector2Array( 0, 0, 100, 100, -100, 100 )
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 21.7361
+height = 93.4232
+
+[sub_resource type="CapsuleShape2D" id=12]
+radius = 73.077
+height = 108.023
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 8, 110.632 )
@@ -49,7 +50,10 @@ extents = Vector2( 777.901, 46.3899 )
 extents = Vector2( 378.875, 10 )
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 10, 311.601 )
+extents = Vector2( 10, 451.657 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 747.203, 10 )
 
 [node name="MainLevel" type="Node2D"]
 z_as_relative = false
@@ -64,16 +68,6 @@ position = Vector2( 200, 569.062 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="PlayerF"]
-
-[node name="RigPolysK" parent="PlayerF" instance=ExtResource( 15 )]
-visible = false
-position = Vector2( 0, 480 )
-scale = Vector2( 0.2, 0.2 )
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="PlayerF/RigPolysK"]
-visible = false
-z_as_relative = false
-occluder = SubResource( 2 )
 
 [node name="Node2D" parent="PlayerF" instance=ExtResource( 4 )]
 position = Vector2( 197.808, 564.445 )
@@ -92,15 +86,22 @@ one_way_collision = true
 script = ExtResource( 2 )
 
 [node name="Collider" type="CollisionShape2D" parent="PlayerK"]
-visible = false
-position = Vector2( 1100, 571.318 )
-shape = SubResource( 4 )
+position = Vector2( 1100, 564.173 )
+shape = SubResource( 10 )
 
 [node name="Sprite" type="AnimatedSprite" parent="PlayerK"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerK"]
-position = Vector2( 1096.29, 486.331 )
-polygon = PoolVector2Array( -20.6249, 18.8737, 9.25793, 15.1656, 39.5302, 22.7337, 68.1206, 49.6424, -83.5579, 115.449, -76.5135, 73.1875, -63.4796, 49.6424, -46.2748, 31.9161 )
+[node name="Node2D" parent="PlayerK" instance=ExtResource( 19 )]
+position = Vector2( 1099.56, 568.041 )
+scale = Vector2( 0.2, 0.2 )
+
+[node name="Area2D" type="Area2D" parent="PlayerK"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerK/Area2D"]
+position = Vector2( 1096.02, 564.271 )
+shape = SubResource( 12 )
 
 [node name="Shuttle" parent="." instance=ExtResource( 3 )]
 position = Vector2( 600, 0 )
@@ -145,15 +146,18 @@ position = Vector2( 1100, 643.094 )
 shape = SubResource( 8 )
 
 [node name="WandL" type="StaticBody2D" parent="."]
-visible = false
 
 [node name="WandL" type="CollisionShape2D" parent="WandL"]
-position = Vector2( -1, 348.627 )
+position = Vector2( -10.7133, 186.566 )
 shape = SubResource( 9 )
 
 [node name="WandL2" type="CollisionShape2D" parent="WandL"]
-position = Vector2( 1440, 343.87 )
+position = Vector2( 1451.3, 184.795 )
 shape = SubResource( 9 )
+
+[node name="Decke" type="CollisionShape2D" parent="WandL"]
+position = Vector2( 721.814, -273.824 )
+shape = SubResource( 11 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 offset = Vector2( 720, 360 )
@@ -234,5 +238,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="body_entered" from="PlayerF/Area2D" to="PlayerF" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="PlayerK/Area2D" to="PlayerK" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Boden/Links" to="." method="_on_Links_body_entered"]
 [connection signal="body_entered" from="Boden/Rechts" to="." method="_on_Rechts_body_entered"]

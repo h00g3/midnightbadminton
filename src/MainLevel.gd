@@ -9,6 +9,7 @@ onready var start_side = Player.Side.LEFT
 func _ready():
 	add_player("Fanny", $PlayerF, Player.Side.LEFT)
 	add_player("Kenny", $PlayerK, Player.Side.RIGHT)
+	$PlayerK/Node2D.scale.x = -0.2
 
 func add_player(name, physics_body, side):
 	players[side] = load("res://src/Player.gd").new(name, physics_body, side)
