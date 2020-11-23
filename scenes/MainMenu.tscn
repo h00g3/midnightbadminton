@@ -12,15 +12,15 @@ resource_name = "flicker"
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5, 0.6, 0.7, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0.937255 ), Color( 1, 1, 1, 0.443137 ), Color( 1, 1, 1, 0.937255 ) ]
+"values": [ Color( 1, 1, 1, 0.937255 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.556863 ), Color( 1, 1, 1, 0.564706 ), Color( 1, 1, 1, 0.827451 ), Color( 1, 1, 1, 0.901961 ), Color( 1, 1, 1, 0.807843 ), Color( 1, 1, 1, 0.937255 ) ]
 }
 
 [node name="MainMenu" type="Control"]
@@ -32,6 +32,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.756863 )
 z_index = -1
 texture = ExtResource( 1 )
 centered = false
@@ -50,11 +51,9 @@ position = Vector2( 110.184, 466.164 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Glow" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.739608 )
+modulate = Color( 1, 1, 1, 0.937255 )
 texture = ExtResource( 4 )
 centered = false
-
-[node name="Tween" type="Tween" parent="Glow"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Glow"]
 anims/flicker = SubResource( 1 )
