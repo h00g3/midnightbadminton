@@ -10,6 +10,7 @@ var hitGround = false
 var timeSpentOnGround = 0
 
 func _ready():
+	$PlayerK/Node2D.scale.x = -0.2
 	add_player("Fanny", $PlayerF, Player.Side.LEFT)
 	add_player("Kenny", $PlayerK, Player.Side.RIGHT)
 	add_shuttle()
