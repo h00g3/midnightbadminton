@@ -70,10 +70,11 @@ func _on_Links_body_entered(body):
 
 func shuttle_hit_ground(body, side):
 	if isShuttle(body):
-		score(side)
+		var scoring_side = other_side(side)
+		score(scoring_side)
 		hitGround = true
 		players[side].get_physics_body().Sad()
-		players[other_side(side)].get_physics_body().Cheer()
+		players[scoring_side].get_physics_body().Cheer()
 
 func score(side):
 	var player = players[side]
