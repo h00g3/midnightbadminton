@@ -57,6 +57,7 @@ func Cheer():
 func Sad():
 	state_machine.travel("Lose")
 
-
 func _on_Area2D_body_entered(body):
 	Schlag()
+	var timer = get_parent().get_node("Scoreboard/Time/Timer")
+	timer.start()

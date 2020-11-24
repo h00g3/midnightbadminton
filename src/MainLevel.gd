@@ -57,6 +57,8 @@ func _process(delta):
 	if(hitGround):
 		timeSpentOnGround += delta
 	show_scores()
+	stare_at_shuttle()
+
 
 func parent_shuttle_with_main_level():
 	var shuttle_position = shuttle.get_global_position()
@@ -109,4 +111,15 @@ func show_scores():
 func isShuttle(body):
 	return body.get_name() == "Shuttle"
 
-
+func stare_at_shuttle():
+	var look_position = shuttle.global_position
+	var F_head = $PlayerF/Node2D/Torso/head
+	var K_head = $PlayerK/Node2D/Torso/head
+	
+	if look_position.x < $PlayerF.global_position.x :
+		F_head.flip_h = true
+	else:
+		F_head.flip_h = false
+		
+	F_head.look_at(look_position)
+	K_head.look_at(look_position)

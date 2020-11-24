@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Shuttle.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/shuttle_alpha.png" type="Texture" id=2]
 [ext_resource path="res://abschlag_gradient.tres" type="Gradient" id=3]
+[ext_resource path="res://Sprites/shuttle_occluderpolygon2d.res" type="OccluderPolygon2D" id=4]
 
 [sub_resource type="PhysicsMaterial" id=1]
 bounce = 3.0
@@ -11,6 +12,7 @@ bounce = 3.0
 
 [node name="Shuttle" type="RigidBody2D"]
 position = Vector2( 755, 0 )
+collision_layer = 3
 mass = 70.0
 physics_material_override = SubResource( 1 )
 gravity_scale = 3.0
@@ -53,3 +55,7 @@ initial_velocity_random = 0.64
 scale_amount = 2.0
 scale_amount_random = 0.29
 color_ramp = ExtResource( 3 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2( 4.35974, -35.1385 )
+occluder = ExtResource( 4 )

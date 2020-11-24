@@ -43,7 +43,6 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=12]
 switch_mode = 2
-auto_advance = true
 priority = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=13]
@@ -102,8 +101,8 @@ region_enabled = true
 region_rect = Rect2( 365, 7, 215, 390 )
 
 [node name="armL" type="Sprite" parent="Torso"]
-position = Vector2( 75.0915, -95.5272 )
-rotation = -0.0415946
+position = Vector2( 72.8471, -91.0383 )
+rotation = -0.0169036
 z_index = -1
 z_as_relative = false
 texture = ExtResource( 1 )
@@ -112,8 +111,8 @@ region_enabled = true
 region_rect = Rect2( 165.679, 0, 122.111, 387.364 )
 
 [node name="armR" type="Sprite" parent="Torso"]
-position = Vector2( -80.7773, -114.189 )
-rotation = 0.00427162
+position = Vector2( -80.7773, -111.945 )
+rotation = 0.00173594
 z_index = 2
 z_as_relative = false
 texture = ExtResource( 1 )
@@ -146,7 +145,7 @@ region_enabled = true
 region_rect = Rect2( 74, 239.846, 119, 449.154 )
 
 [node name="head" type="Sprite" parent="Torso"]
-position = Vector2( 2.98337, -186.026 )
+position = Vector2( 3.54448, -184.904 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, -70 )
 region_enabled = true

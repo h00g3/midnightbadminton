@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://src/MainLevel.gd" type="Script" id=1]
 [ext_resource path="res://src/PlayerK.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Time.gd" type="Script" id=3]
 [ext_resource path="res://scenes/FannyTest.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/PlayerF.gd" type="Script" id=5]
 [ext_resource path="res://Sprites/LEVEL1/blue_BG.png" type="Texture" id=6]
@@ -33,6 +34,9 @@ height = 93.4232
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 73.077
 height = 108.023
+
+[sub_resource type="OccluderPolygon2D" id=11]
+polygon = PoolVector2Array( 1495.37, 500.498, 1505.46, 496.083, 1516.61, 503.861, 1517.87, 525.304, 1511.14, 531.401, 1527.54, 540.23, 1528.78, 679.851, 1485.89, 680.692, 1483.6, 544.014, 1498.95, 534.764, 1493.27, 513.742 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 8, 110.632 )
@@ -98,6 +102,10 @@ collision_mask = 2
 position = Vector2( 1096.02, 564.271 )
 shape = SubResource( 4 )
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="PlayerK"]
+position = Vector2( -405.312, 0 )
+occluder = SubResource( 11 )
+
 [node name="Netz" type="StaticBody2D" parent="."]
 
 [node name="Collider" type="CollisionShape2D" parent="Netz"]
@@ -141,56 +149,6 @@ shape = SubResource( 10 )
 offset = Vector2( 720, 360 )
 transform = Transform2D( 1, 0, 0, 1, 720, 360 )
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-
-[node name="Blue_BG" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource( 6 )
-
-[node name="Light2D" type="Light2D" parent="ParallaxBackground/ParallaxLayer/Blue_BG"]
-visible = false
-texture = ExtResource( 17 )
-color = Color( 0.968627, 0.87451, 0.592157, 1 )
-energy = 1.49
-mode = 2
-shadow_enabled = true
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer/Blue_BG/Light2D"]
-z_index = 6
-texture = ExtResource( 18 )
-
-[node name="Stars" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource( 8 )
-
-[node name="Horizont" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource( 13 )
-
-[node name="Wahrzeichen" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource( 10 )
-
-[node name="Haeuser" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource( 7 )
-
-[node name="Lampen" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-z_index = 1
-texture = ExtResource( 9 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer/Lampen"]
-visible = false
-show_behind_parent = true
-texture = ExtResource( 16 )
-
-[node name="Shadow_street" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-z_index = 2
-texture = ExtResource( 11 )
-
-[node name="Zaun" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-z_index = 2
-texture = ExtResource( 12 )
-
-[node name="Netz" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-z_index = 1
-texture = ExtResource( 14 )
-
 [node name="Scoreboard" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -205,17 +163,115 @@ margin_right = 65.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 0, 15 )
 rect_scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="Scoreboard/Fscore"]
+modulate = Color( 1, 1, 1, 0.427451 )
+self_modulate = Color( 1, 1, 1, 0.588235 )
+show_behind_parent = true
+position = Vector2( -8.91664, 8.64712 )
+scale = Vector2( 0.514367, 0.646475 )
+color = Color( 0.133333, 0.121569, 0.121569, 1 )
+polygon = PoolVector2Array( -60.0493, -28.5006, -37.3867, 18.722, 49.4541, 18.754, 73.5145, -29.0304 )
 
 [node name="Kscore" type="Label" parent="Scoreboard"]
-margin_left = 1388.0
+margin_left = 1395.0
 margin_top = 15.0
-margin_right = 1428.0
+margin_right = 1435.0
 margin_bottom = 29.0
 rect_scale = Vector2( 2, 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Polygon2D" type="Polygon2D" parent="Scoreboard/Kscore"]
+modulate = Color( 1, 1, 1, 0.635294 )
+self_modulate = Color( 1, 1, 1, 0.588235 )
+show_behind_parent = true
+position = Vector2( 13.3314, 8.01717 )
+scale = Vector2( 0.514367, 0.646475 )
+color = Color( 0.109804, 0.0980392, 0.0980392, 1 )
+polygon = PoolVector2Array( -60.0493, -28.5006, -37.3867, 18.722, 49.4541, 18.754, 73.5145, -29.0304 )
+
+[node name="Time" type="Label" parent="Scoreboard"]
+margin_left = 660.01
+margin_top = 8.48987
+margin_right = 731.01
+margin_bottom = 46.4899
+rect_scale = Vector2( 2, 2 )
+align = 1
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="Scoreboard/Time"]
+wait_time = 0.1
+
+[node name="Polygon2D" type="Polygon2D" parent="Scoreboard/Time"]
+modulate = Color( 1, 1, 1, 0.427451 )
+show_behind_parent = true
+position = Vector2( 31.879, 6.75633 )
+scale = Vector2( 0.454367, 0.464427 )
+color = Color( 0.133333, 0.121569, 0.121569, 1 )
+polygon = PoolVector2Array( -60.0493, -28.5006, -37.3867, 18.722, 49.4541, 18.754, 73.5145, -29.0304 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 720, 382 )
+z_index = -2
+z_as_relative = false
+
+[node name="Blue_BG" type="Sprite" parent="Background"]
+texture = ExtResource( 6 )
+
+[node name="Light2D" type="Light2D" parent="Background/Blue_BG"]
+texture = ExtResource( 17 )
+energy = 0.46
+shadow_enabled = true
+shadow_gradient_length = 3.0
+shadow_filter = 1
+shadow_filter_smooth = 10.0
+
+[node name="SpriteLight" type="Sprite" parent="Background/Blue_BG/Light2D"]
+z_index = 6
+texture = ExtResource( 18 )
+
+[node name="Stars" type="Sprite" parent="Background"]
+texture = ExtResource( 8 )
+
+[node name="Wahrzeichen" type="Sprite" parent="Background"]
+texture = ExtResource( 10 )
+
+[node name="Horizont" type="Sprite" parent="Background"]
+texture = ExtResource( 13 )
+
+[node name="Haeuser" type="Sprite" parent="Background"]
+texture = ExtResource( 7 )
+
+[node name="Lampen" type="Sprite" parent="Background"]
+texture = ExtResource( 9 )
+
+[node name="SpriteGlow" type="Sprite" parent="Background/Lampen"]
+modulate = Color( 1, 1, 1, 0.423529 )
+show_behind_parent = true
+texture = ExtResource( 16 )
+
+[node name="Shadow_street" type="Sprite" parent="Background"]
+visible = false
+z_index = 2
+texture = ExtResource( 11 )
+
+[node name="Zaun" type="Sprite" parent="Background"]
+z_index = 2
+texture = ExtResource( 12 )
+
+[node name="Netz" type="Sprite" parent="Background"]
+z_index = 1
+texture = ExtResource( 14 )
 [connection signal="body_entered" from="PlayerF/Area2D" to="PlayerF" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="PlayerK/Area2D" to="PlayerK" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Boden/Links" to="." method="_on_Links_body_entered"]
 [connection signal="body_entered" from="Boden/Rechts" to="." method="_on_Rechts_body_entered"]
+[connection signal="timeout" from="Scoreboard/Time/Timer" to="Scoreboard/Time" method="_on_Timer_timeout"]
