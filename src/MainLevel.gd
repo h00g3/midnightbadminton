@@ -3,7 +3,7 @@ extends Node2D
 onready var players = {}
 onready var shuttle = null
 onready var service_side = Player.Side.LEFT
-onready var serviceOffset = Vector2(0,-200)
+onready var serviceOffset = Vector2(0,-100)
 onready var winscore = 2
 var shuttle_hit_ground = false
 var timeSpentOnGround = 0
@@ -57,6 +57,7 @@ func _process(delta):
 	elif is_player_performing_service() and pressed_service():
 		parent_shuttle_with_main_level()
 		shuttle.set_mode(RigidBody2D.MODE_RIGID)
+		shuttle.apply_central_impulse(Vector2(0,-20000))
 	show_scores()
 
 func is_player_performing_service():
