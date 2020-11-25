@@ -46,4 +46,3 @@ func getPlayerCollisionShape():
 		if child is CollisionShape2D:
 			return child
 	push_error ( "no collision shape found for player %s" % name)
-

@@ -18,10 +18,22 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://src/Player.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "PlayerBody",
+"language": "GDScript",
+"path": "res://src/PlayerBody.gd"
+}, {
+"base": "Reference",
+"class": "Racket",
+"language": "GDScript",
+"path": "res://src/Racket.gd"
 } ]
 _global_script_class_icons={
 "GitAPI": "",
-"Player": ""
+"Player": "",
+"PlayerBody": "",
+"Racket": ""
 }
 
 [application]
