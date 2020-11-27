@@ -35,27 +35,27 @@ height = 93.4232
 radius = 73.077
 height = 108.023
 
-[sub_resource type="OccluderPolygon2D" id=11]
+[sub_resource type="OccluderPolygon2D" id=5]
 polygon = PoolVector2Array( 1495.37, 500.498, 1505.46, 496.083, 1516.61, 503.861, 1517.87, 525.304, 1511.14, 531.401, 1527.54, 540.23, 1528.78, 679.851, 1485.89, 680.692, 1483.6, 544.014, 1498.95, 534.764, 1493.27, 513.742 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 8, 110.632 )
 
-[sub_resource type="PhysicsMaterial" id=6]
+[sub_resource type="PhysicsMaterial" id=7]
 friction = 10.0
 bounce = 2.0
 absorbent = true
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 777.901, 46.3899 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 378.875, 10 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 10, 451.657 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 747.203, 10 )
 
 [node name="MainLevel" type="Node2D"]
@@ -83,6 +83,16 @@ position = Vector2( 199.068, 566.965 )
 shape = SubResource( 2 )
 one_way_collision = true
 
+[node name="ProgressBar" type="ProgressBar" parent="PlayerF"]
+margin_left = 230.0
+margin_top = 520.0
+margin_right = 234.0
+margin_bottom = 534.0
+value = 50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="PlayerK" type="KinematicBody2D" parent="."]
 script = ExtResource( 2 )
 
@@ -104,46 +114,46 @@ shape = SubResource( 4 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="PlayerK"]
 position = Vector2( -405.312, 0 )
-occluder = SubResource( 11 )
+occluder = SubResource( 5 )
 
 [node name="Netz" type="StaticBody2D" parent="."]
 
 [node name="Collider" type="CollisionShape2D" parent="Netz"]
 position = Vector2( 715, 529.756 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="Boden" type="StaticBody2D" parent="."]
-physics_material_override = SubResource( 6 )
+physics_material_override = SubResource( 7 )
 
 [node name="Collider" type="CollisionShape2D" parent="Boden"]
 position = Vector2( 698.146, 680.344 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="Links" type="Area2D" parent="Boden"]
 
 [node name="Collider" type="CollisionShape2D" parent="Boden/Links"]
 position = Vector2( 328.166, 643.094 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="Rechts" type="Area2D" parent="Boden"]
 
 [node name="Collider" type="CollisionShape2D" parent="Boden/Rechts"]
 position = Vector2( 1100, 643.094 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="WandL" type="StaticBody2D" parent="."]
 
 [node name="WandL" type="CollisionShape2D" parent="WandL"]
 position = Vector2( -10.7133, 186.566 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="WandL2" type="CollisionShape2D" parent="WandL"]
 position = Vector2( 1451.3, 184.795 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="Decke" type="CollisionShape2D" parent="WandL"]
 position = Vector2( 721.814, -273.824 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 offset = Vector2( 720, 360 )
