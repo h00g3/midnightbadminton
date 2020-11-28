@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Menue/Titleplusbuttons.png.jpg" type="Texture" id=1]
 [ext_resource path="res://scenes/Kenny.tscn" type="PackedScene" id=2]
@@ -6,7 +6,8 @@
 [ext_resource path="res://Menue/title_glow.png" type="Texture" id=4]
 [ext_resource path="res://Menue/Title_new.png" type="Texture" id=5]
 [ext_resource path="res://scenes/MainMenu.gd" type="Script" id=6]
-
+[ext_resource path="res://Menue/NEW GAME.png" type="Texture" id=7]
+[ext_resource path="res://Menue/SEITENWECHSEL.png" type="Texture" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "flicker"
@@ -24,6 +25,58 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0.937255 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.556863 ), Color( 1, 1, 1, 0.564706 ), Color( 1, 1, 1, 0.827451 ), Color( 1, 1, 1, 0.901961 ), Color( 1, 1, 1, 0.807843 ), Color( 1, 1, 1, 0.937255 ) ]
 }
 
+[sub_resource type="Animation" id=2]
+resource_name = "Sideswitch"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fanny:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 155.541, 516.561 ), Vector2( 1275, 516.561 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Fanny:scale")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.7, 0.7 ), Vector2( -0.7, 0.7 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Kenny:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1294.55, 476.076 ), Vector2( 175, 476.076 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Kenny:scale")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.7, -0.7 ), Vector2( -0.7, -0.7 ) ]
+}
+
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -32,29 +85,60 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="."]
-z_index = -1
-texture = ExtResource( 1 )
-centered = false
-
-[node name="Sprite2" type="Sprite" parent="."]
+[node name="MidnightBadminton" type="Sprite" parent="."]
 texture = ExtResource( 5 )
 centered = false
 
-[node name="Node2D" parent="Sprite2" instance=ExtResource( 2 )]
-position = Vector2( 1294.55, 476.076 )
-rotation = -3.14159
-scale = Vector2( 0.7, -0.7 )
-
-[node name="Node2D2" parent="Sprite2" instance=ExtResource( 3 )]
-position = Vector2( 155.541, 516.561 )
-scale = Vector2( 0.7, 0.7 )
-z_index = 2
-z_as_relative = false
-
 [node name="Glow" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.937255 )
 texture = ExtResource( 4 )
 centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Glow"]
 anims/flicker = SubResource( 1 )
+
+[node name="Kenny" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1294.55, 476.076 )
+rotation = -3.14159
+scale = Vector2( 0.7, -0.7 )
+z_as_relative = false
+
+[node name="Fanny" parent="." instance=ExtResource( 3 )]
+position = Vector2( 155.541, 516.561 )
+scale = Vector2( 0.7, 0.7 )
+z_index = 2
+z_as_relative = false
+
+[node name="Background" type="Sprite" parent="."]
+z_index = -2
+z_as_relative = false
+texture = ExtResource( 1 )
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Sideswitch = SubResource( 2 )
+
+[node name="TextureButton" type="TextureButton" parent="."]
+modulate = Color( 1, 1, 1, 0.462745 )
+margin_left = 651.685
+margin_top = 516.116
+margin_right = 1044.69
+margin_bottom = 576.116
+texture_hover = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+margin_left = 628.85
+margin_top = 584.898
+margin_right = 965.85
+margin_bottom = 624.898
+texture_normal = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

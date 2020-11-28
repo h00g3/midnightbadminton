@@ -9,7 +9,7 @@ export (int) var speed = 200
 const ACCELERATION : int = 30
 
 var jumpForce : int = 400
-var gravity : int = 1000
+const gravity : int = 1000
 
 # Doppelsprung-Kontrollvariable, Abschlag
 onready var doublejump_zaehler : bool = false
@@ -53,7 +53,8 @@ func _Steuerung(delta):
 			vel.y -= jumpForce
 			Jump()
 			doublejump_zaehler = false
-	
+	#gravity
+	vel.y += gravity * delta
 	# applying the velocity	
 #	var vector = Vector2(vel.normalized().x,-1)
 	#gravity

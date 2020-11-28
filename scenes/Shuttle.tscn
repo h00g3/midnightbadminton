@@ -9,6 +9,7 @@
 bounce = 3.0
 
 [sub_resource type="CircleShape2D" id=2]
+radius = 9.35524
 
 [node name="Shuttle" type="RigidBody2D"]
 position = Vector2( 755, 0 )
@@ -28,8 +29,14 @@ shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = 4.71239
-scale = Vector2( 0.03, 0.03 )
+scale = Vector2( 0.025, 0.025 )
 texture = ExtResource( 2 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
+position = Vector2( 1171.28, 145.322 )
+rotation = 1.5708
+scale = Vector2( 33.3333, 33.3333 )
+occluder = ExtResource( 4 )
 
 [node name="Particles" type="CPUParticles2D" parent="."]
 amount = 32
@@ -55,7 +62,3 @@ initial_velocity_random = 0.64
 scale_amount = 2.0
 scale_amount_random = 0.29
 color_ramp = ExtResource( 3 )
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-position = Vector2( 4.35974, -35.1385 )
-occluder = ExtResource( 4 )

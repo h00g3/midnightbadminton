@@ -6,7 +6,7 @@ onready var racket = load("res://src/Racket.gd").new()
 
 onready var state_machine = $Node2D/AnimationTree.get("parameters/playback")
 
-# Vektor fÃ¼r Bewegung, Sprungkraft und Gravity
+# Vektor für Bewegung, Sprungkraft und Gravity
 var vel = Vector2() setget ,get_velocity
 
 var side setget set_side, get_side

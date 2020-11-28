@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Sprites/shuttle_alpha.png" type="Texture" id=1]
+
+[node name="SatzSprite" type="Sprite"]
+modulate = Color( 0, 0, 0, 0.529412 )
+position = Vector2( 652.53, 20.5119 )
+rotation = 2.79253
+scale = Vector2( 0.0443819, 0.0443819 )
+texture = ExtResource( 1 )

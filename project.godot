@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "PlayerBody",
 "language": "GDScript",
-"path": "res://src/PlayerBody.gd"
+"path": "res://src/PlayerBody.gd.REMOTE.gd"
 }, {
 "base": "Reference",
 "class": "Racket",

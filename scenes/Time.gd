@@ -1,8 +1,10 @@
 extends Label
 
-var ms = 11
-var s = 111
+var ms = 0
+var s = 25
 var m = 0
+
+signal TIMEOVER
 
 func _process(delta):
 	if ms < 1 :
@@ -16,7 +18,15 @@ func _process(delta):
 	elif s > 34 :
 		set_Timer_color(Color(0.5,1,0,1))
 	
+	if s <= 0 :
+		emit_signal("TIMEOVER")
+		reset_Timer()
+	
 	set_text(str(s)+":"+str(ms))
+
+func reset_Timer():
+	s = 25
+	ms = 0
 
 func set_Timer_color(rgba):
 	self.add_color_override("font_color", rgba)
@@ -24,4 +34,3 @@ func set_Timer_color(rgba):
 func _on_Timer_timeout():
 	if s > 0 :
 		ms -= 1
-
