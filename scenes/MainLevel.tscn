@@ -258,6 +258,7 @@ texture = ExtResource( 10 )
 texture = ExtResource( 13 )
 
 [node name="Haeuser" type="Sprite" parent="Background"]
+position = Vector2( 0.902527, 0 )
 texture = ExtResource( 7 )
 
 [node name="Lampen" type="Sprite" parent="Background"]

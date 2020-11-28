@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends PlayerBody
 
 export (int) var speed = 200
 
@@ -9,8 +9,6 @@ var jumpForce : int = 400
 var gravity : int = 1000
 
 onready var dashing = true
-
-onready var state_machine = $Node2D/AnimationTree.get("parameters/playback")
 
 func _physics_process(delta):
 	vel.x = 0
@@ -40,24 +38,3 @@ func _Steuerung(delta):
 	vel = move_and_slide(vel, Vector2.UP)
 	#gravity
 	vel.y += gravity * delta
-
-func Jump():
-	state_machine.travel("Jump")
-
-func Walk():
-	if state_machine.get_current_node() != ("Walking"):
-		state_machine.travel("Walking")
-
-func Schlag():
-	state_machine.travel("Schlag")
-
-func Cheer():
-	state_machine.travel("Winning")
-
-func Sad():
-	state_machine.travel("Lose")
-
-func _on_Area2D_body_entered(body):
-	Schlag()
-	var timer = get_parent().get_node("Scoreboard/Time/Timer")
-	timer.start()

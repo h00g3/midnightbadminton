@@ -1,6 +1,6 @@
 # Player-Script Fanny (fast identisch mit Kennny)
 
-extends KinematicBody2D
+extends PlayerBody
 
 # Variable zum Einstellen in der Godot UI für die Gecchwindigkeit
 export (int) var speed = 200 
@@ -15,10 +15,8 @@ var gravity : int = 1000
 
 # Doppelsprung-Kontrollvariable, Abschlag
 onready var doublejump_zaehler : bool = false
-onready var abschlag_fanny : bool = true
-onready var shuttle = load("res://scenes/Shuttle.tscn")
 
-onready var state_machine = $Node2D/AnimationTree.get("parameters/playback")
+#onready var racket = load("res://src/Racket.gd").new(Player.Side.LEFT)
 
 func _physics_process(delta):
 	vel.x = 0
@@ -52,24 +50,3 @@ func _Steuerung(delta):
 	vel = move_and_slide(vel, Vector2.UP)
 	#gravity
 	vel.y += gravity * delta
-
-func Jump():
-	state_machine.travel("Jump")
-
-func Walk():
-	if state_machine.get_current_node() != ("WalkR"):
-		state_machine.travel("WalkR")
-
-func Schlag():
-	state_machine.travel("Schlag")
-
-func Cheer():
-	state_machine.travel("Winning")
-
-func Sad():
-	state_machine.travel("Lose")
-
-func _on_Area2D_body_entered(body):
-	Schlag()
-	var timer = get_parent().get_node("Scoreboard/Time/Timer")
-	timer.start()
