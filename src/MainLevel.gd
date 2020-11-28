@@ -3,7 +3,7 @@ extends Node2D
 onready var players = {}
 onready var shuttle = null
 onready var service_side = Player.Side.LEFT
-onready var serviceOffset = Vector2(0,-100)
+onready var serviceOffset = Vector2(0,-200)
 onready var winscore = 2
 var shuttle_hit_ground = false
 var timeSpentOnGround = 0
@@ -20,14 +20,12 @@ func add_player(name, physics_body, side):
 
 func add_shuttle():
 	if shuttle == null:
-		print("getting shuttle instance")
 		shuttle = load("res://scenes/Shuttle.tscn").instance()
 
 func delete_shuttle():
 	if shuttle != null:
 		shuttle.free()
 		shuttle = null
-		print("shuttle deleted")
 
 func service():
 	shuttle.set_mode(RigidBody2D.MODE_STATIC)

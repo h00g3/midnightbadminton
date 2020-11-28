@@ -8,8 +8,6 @@ export (int) var speed = 200
 # Beschleunigung des Spielers
 const ACCELERATION : int = 30
 
-# Vektor für Bewegung, Sprungkraft und Gravity
-var vel = Vector2()
 var jumpForce : int = 400
 var gravity : int = 1000
 

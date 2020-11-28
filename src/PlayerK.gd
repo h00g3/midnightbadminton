@@ -4,7 +4,6 @@ export (int) var speed = 200
 
 const ACCELERATION : int = 30
 
-var vel = Vector2()
 var jumpForce : int = 400
 var gravity : int = 1000
 
