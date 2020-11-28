@@ -11,7 +11,7 @@ const ACCELERATION : int = 30
 # Vektor für Bewegung, Sprungkraft und Gravity
 var vel = Vector2()
 var jumpForce : int = 400
-var gravity : int = 1000
+const gravity : int = 1000
 
 # Doppelsprung-Kontrollvariable, Abschlag
 onready var doublejump_zaehler : bool = false
@@ -45,8 +45,8 @@ func _Steuerung(delta):
 			vel.y -= jumpForce
 			Jump()
 			doublejump_zaehler = false
-	
-	# applying the velocity	
-	vel = move_and_slide(vel, Vector2.UP)
 	#gravity
 	vel.y += gravity * delta
+	# applying the velocity	
+	vel = move_and_slide(vel, Vector2.UP)
+	

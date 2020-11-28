@@ -7,7 +7,6 @@
 [ext_resource path="res://Menue/Title_new.png" type="Texture" id=5]
 [ext_resource path="res://scenes/MainMenu.gd" type="Script" id=6]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "flicker"
 loop = true

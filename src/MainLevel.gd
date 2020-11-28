@@ -4,16 +4,23 @@ onready var players = {}
 onready var shuttle = null
 onready var service_side = Player.Side.LEFT
 onready var serviceOffset = Vector2(0,-100)
-onready var winscore = 2
+
 var shuttle_hit_ground = false
 var timeSpentOnGround = 0
 
+export (int) var winscore
+export (int) var satzno
+
+const SATZSPRITE = preload("res://scenes/SatzSprite.tscn")
+var formation = Vector2(5, 1)
+
 func _ready():
-	$PlayerK/Node2D.scale.x = -0.2
+	$PlayerK/Node2D.scale.x = -$PlayerK/Node2D.scale.x # Mirror Player
 	add_player("Fanny", $PlayerF, Player.Side.LEFT)
 	add_player("Kenny", $PlayerK, Player.Side.RIGHT)
 	add_shuttle()
 	service()
+	add_base_satz_sprites()
 
 func add_player(name, physics_body, side):
 	players[side] = load("res://src/Player.gd").new(name, physics_body, side)
@@ -102,8 +109,11 @@ func score(scoring_side):
 	score_animations(scoring_side)
 	var player = players[scoring_side]
 	var score = player.score()
+	$Scoreboard/StatusLabel.text = "Punkt für %s!" % player.name
 	if score >= winscore:
 		win(player)
+	if player.get_score_satz() >= satzno :
+		total_win(player)
 
 func score_animations(scoring_side):
 	players[scoring_side].get_physics_body().Cheer()
@@ -116,9 +126,20 @@ func other_side(side):
 		return Player.Side.LEFT
 
 func win(player):
+	player.score_satz()
+	count_satz(player)
 	print ("%s wins!" % player.name)
-	get_tree().reload_current_scene()
+	players[Player.Side.LEFT].reset_score()
+	players[Player.Side.RIGHT].reset_score()
+	#get_tree().reload_current_scene()
 	
+func total_win(player):
+	$Scoreboard/StatusLabel.text = "%s gewinnt das Spiel!" % player.name
+	players[Player.Side.LEFT].reset_all()
+	players[Player.Side.RIGHT].reset_all()
+	remove_satz_sprites()
+	add_base_satz_sprites()
+
 func show_scores():
 	$Scoreboard/Fscore.text = str(players[Player.Side.LEFT].score)
 	$Scoreboard/Kscore.text = str(players[Player.Side.RIGHT].score)
@@ -138,3 +159,34 @@ func stare_at_shuttle():
 		
 	F_head.look_at(look_position)
 	K_head.look_at(look_position)
+	
+func count_satz(player):
+	var satz_status = Vector2(players[Player.Side.LEFT].score_satz, players[Player.Side.RIGHT].score_satz)
+	$Scoreboard/StatusLabel.text = "Stand: "+(str(satz_status.x)+" : "+(str(satz_status.y)))
+	
+	for x in (satz_status.x) :
+		add_satz_sprite(x, -30, 655, 160, 0.037, Color(1,1,1,1))
+	for y in (satz_status.y) :
+		add_satz_sprite(y, 30, 800, 200, 0.037, Color(1,1,1,1))
+
+func add_base_satz_sprites():
+	for i in (satzno) :
+		add_satz_sprite(i, -30, 655, 160, 0.044, Color(0,0,0,0.2))
+		add_satz_sprite(i, 30, 800, 200, 0.044, Color(0,0,0,0.2))
+
+func add_satz_sprite(y, direction, pos, rot, scale, color) :
+		var new_satzsprite_pos = Vector2(0, 20)
+		new_satzsprite_pos.x = y*(direction)
+		var new_satzsprite = SATZSPRITE.instance()
+		new_satzsprite.rotation_degrees = rot
+		new_satzsprite.position = new_satzsprite_pos + Vector2(pos, 0)
+		new_satzsprite.scale = Vector2(scale, scale)
+		new_satzsprite.modulate = color
+		$Scoreboard.add_child(new_satzsprite)
+	
+func remove_satz_sprites():
+	var scoreboard = get_node("Scoreboard")
+	for child in scoreboard.get_children() :
+		print (child.get_name())
+		if child.get_name().begins_with("@SatzSprite") :
+			child.free()
