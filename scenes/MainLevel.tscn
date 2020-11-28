@@ -14,8 +14,8 @@
 [ext_resource path="res://Sprites/LEVEL1/zaun.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/LEVEL1/horizont.png" type="Texture" id=13]
 [ext_resource path="res://Sprites/LEVEL1/netz.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/lighttest1.png" type="Texture" id=15]
 [ext_resource path="res://Sprites/LEVEL1/licht.png" type="Texture" id=16]
-[ext_resource path="res://Sprites/lights_v2.png" type="Texture" id=17]
 [ext_resource path="res://Sprites/lights_v2_blobs.png" type="Texture" id=18]
 [ext_resource path="res://scenes/Kenny.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scenes/SatzSprite.tscn" type="PackedScene" id=20]
@@ -62,8 +62,8 @@ extents = Vector2( 747.203, 10 )
 [node name="MainLevel" type="Node2D"]
 z_as_relative = false
 script = ExtResource( 1 )
-winscore = 2
-satzno = 2
+winscore = 3
+satzno = 3
 
 [node name="PlayerF" type="KinematicBody2D" parent="."]
 script = ExtResource( 5 )
@@ -250,20 +250,35 @@ position = Vector2( 720, 382 )
 z_index = -2
 z_as_relative = false
 
-[node name="Blue_BG" type="Sprite" parent="Background"]
-texture = ExtResource( 6 )
-
-[node name="Light2D" type="Light2D" parent="Background/Blue_BG"]
-texture = ExtResource( 17 )
-energy = 0.46
+[node name="Light2D" type="Light2D" parent="Background"]
+position = Vector2( -450, -60 )
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 15 )
+energy = 0.3
+range_height = 1.0
 shadow_enabled = true
-shadow_gradient_length = 3.0
-shadow_filter = 1
-shadow_filter_smooth = 10.0
+shadow_gradient_length = 10.0
+shadow_filter = 2
+shadow_filter_smooth = 30.0
 
-[node name="SpriteLight" type="Sprite" parent="Background/Blue_BG/Light2D"]
+[node name="Light2D2" type="Light2D" parent="Background"]
+position = Vector2( 255, -70 )
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 15 )
+energy = 0.3
+range_height = 1.0
+shadow_enabled = true
+shadow_gradient_length = 10.0
+shadow_filter = 2
+shadow_filter_smooth = 30.0
+
+[node name="SpriteLight" type="Sprite" parent="Background/Light2D2"]
+visible = false
 z_index = 6
 texture = ExtResource( 18 )
+
+[node name="Blue_BG" type="Sprite" parent="Background"]
+texture = ExtResource( 6 )
 
 [node name="Stars" type="Sprite" parent="Background"]
 texture = ExtResource( 8 )
@@ -298,6 +313,11 @@ texture = ExtResource( 12 )
 [node name="Netz" type="Sprite" parent="Background"]
 z_index = 1
 texture = ExtResource( 14 )
+
+[node name="SpriteLight" type="Sprite" parent="Background"]
+visible = false
+z_index = 6
+texture = ExtResource( 18 )
 [connection signal="body_entered" from="PlayerF/Area2D" to="PlayerF" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="PlayerK/Area2D" to="PlayerK" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Boden/Links" to="." method="_on_Links_body_entered"]

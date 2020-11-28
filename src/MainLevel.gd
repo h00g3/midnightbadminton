@@ -16,6 +16,7 @@ var formation = Vector2(5, 1)
 
 func _ready():
 	$PlayerK/Node2D.scale.x = -$PlayerK/Node2D.scale.x # Mirror Player
+	$Scoreboard/Time.connect("TIMEOVER", self, "_on_Timer_Timeout")
 	add_player("Fanny", $PlayerF, Player.Side.LEFT)
 	add_player("Kenny", $PlayerK, Player.Side.RIGHT)
 	add_shuttle()
@@ -67,7 +68,15 @@ func _process(delta):
 		shuttle.apply_central_impulse(Vector2(0,-20000))
 	show_scores()
 	stare_at_shuttle()
-
+	
+func _on_Timer_Timeout():
+	if players[Player.Side.LEFT].score > players[Player.Side.RIGHT].score :
+		win(players[Player.Side.LEFT])
+	elif players[Player.Side.LEFT].score < players[Player.Side.RIGHT].score :
+		print ("%s Wins" %players[Player.Side.RIGHT].name)
+		win(players[Player.Side.RIGHT])
+	else:
+		print ("Gleichstand")
 
 func is_player_performing_service():
 	return shuttle.get_parent() == get_service_player_shape()
@@ -110,10 +119,16 @@ func score(scoring_side):
 	var player = players[scoring_side]
 	var score = player.score()
 	$Scoreboard/StatusLabel.text = "Punkt für %s!" % player.name
+	
 	if score >= winscore:
-		win(player)
+		if two_score_difference() :
+			win(player)
 	if player.get_score_satz() >= satzno :
 		total_win(player)
+
+func two_score_difference() :
+	var difference = players[Player.Side.LEFT].score - players[Player.Side.RIGHT].score
+	return abs(difference) > 1 
 
 func score_animations(scoring_side):
 	players[scoring_side].get_physics_body().Cheer()
@@ -168,12 +183,10 @@ func count_satz(player):
 		add_satz_sprite(x, -30, 655, 160, 0.037, Color(1,1,1,1))
 	for y in (satz_status.y) :
 		add_satz_sprite(y, 30, 800, 200, 0.037, Color(1,1,1,1))
-
 func add_base_satz_sprites():
 	for i in (satzno) :
 		add_satz_sprite(i, -30, 655, 160, 0.044, Color(0,0,0,0.2))
 		add_satz_sprite(i, 30, 800, 200, 0.044, Color(0,0,0,0.2))
-
 func add_satz_sprite(y, direction, pos, rot, scale, color) :
 		var new_satzsprite_pos = Vector2(0, 20)
 		new_satzsprite_pos.x = y*(direction)
@@ -183,7 +196,6 @@ func add_satz_sprite(y, direction, pos, rot, scale, color) :
 		new_satzsprite.scale = Vector2(scale, scale)
 		new_satzsprite.modulate = color
 		$Scoreboard.add_child(new_satzsprite)
-	
 func remove_satz_sprites():
 	var scoreboard = get_node("Scoreboard")
 	for child in scoreboard.get_children() :

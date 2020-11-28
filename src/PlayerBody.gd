@@ -6,6 +6,7 @@ onready var racket = load("res://src/Racket.gd").new(Player.Side.LEFT)
 
 onready var state_machine = $Node2D/AnimationTree.get("parameters/playback")
 
+onready var start = true
 
 
 func Jump():
@@ -28,5 +29,8 @@ func _on_Area2D_body_entered(body):
 	print("area entered")
 	Schlag()
 	racket.hit_shuttle(body)
-	var timer = get_parent().get_node("Scoreboard/Time/Timer")
-	timer.start()
+	if start == true :
+		var timer = get_parent().get_node("Scoreboard/Time/Timer")
+		timer.start()
+		start == false
+	
