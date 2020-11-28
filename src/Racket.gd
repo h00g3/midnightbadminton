@@ -6,7 +6,7 @@ var average_x_impulse = 35000
 
 var minimum_y_impulse = -20000
 var average_y_impulse = -50000
-var smash_y_impulse = 2000
+var smash_y_impulse = -20000
 
 func hit_shuttle(shuttle, player):
 	var impulse = calculate_impulse(shuttle, player)

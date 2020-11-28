@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://src/MainLevel.gd" type="Script" id=1]
 [ext_resource path="res://src/PlayerK.gd" type="Script" id=2]
@@ -16,9 +16,11 @@
 [ext_resource path="res://Sprites/LEVEL1/netz.png" type="Texture" id=14]
 [ext_resource path="res://Sprites/lighttest1.png" type="Texture" id=15]
 [ext_resource path="res://Sprites/LEVEL1/licht.png" type="Texture" id=16]
+[ext_resource path="res://Audio/Midnight_Badminton_sounds_F.wav" type="AudioStream" id=17]
 [ext_resource path="res://Sprites/lights_v2_blobs.png" type="Texture" id=18]
 [ext_resource path="res://scenes/Kenny.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scenes/SatzSprite.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Audio/Midnight_Badminton_sounds_K.wav" type="AudioStream" id=21]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 23.7809
@@ -96,6 +98,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PlayerF"]
+stream = ExtResource( 17 )
+attenuation = 0.07966
+
 [node name="PlayerK" type="KinematicBody2D" parent="."]
 script = ExtResource( 2 )
 
@@ -118,6 +124,10 @@ shape = SubResource( 4 )
 [node name="LightOccluder2D" type="LightOccluder2D" parent="PlayerK"]
 position = Vector2( -405.312, 0 )
 occluder = SubResource( 5 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PlayerK"]
+stream = ExtResource( 21 )
+attenuation = 0.07966
 
 [node name="Netz" type="StaticBody2D" parent="."]
 
@@ -315,7 +325,6 @@ z_index = 1
 texture = ExtResource( 14 )
 
 [node name="SpriteLight" type="Sprite" parent="Background"]
-visible = false
 z_index = 6
 texture = ExtResource( 18 )
 [connection signal="body_entered" from="PlayerF/Area2D" to="PlayerF" method="_on_Area2D_body_entered"]
