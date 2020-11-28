@@ -6,14 +6,15 @@ onready var racket = load("res://src/Racket.gd").new(Player.Side.LEFT)
 
 onready var state_machine = $Node2D/AnimationTree.get("parameters/playback")
 
-
+#func state_machine() :
+#	return $Node2D/AnimationTree.get("parameters/playback")
 
 func Jump():
 	state_machine.travel("Jump")
 
 func Walk():
-	if state_machine.get_current_node() != ("WalkR"):
-		state_machine.travel("WalkR")
+	if state_machine.get_current_node() != ("Walking"):
+		state_machine.travel("Walking")
 
 func Schlag():
 	state_machine.travel("Schlag")

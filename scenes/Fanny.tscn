@@ -21,7 +21,7 @@ animation = "Lose"
 animation = "Schlag"
 
 [sub_resource type="AnimationNodeAnimation" id=5]
-animation = "WalkR"
+animation = "Walking"
 
 [sub_resource type="AnimationNodeAnimation" id=6]
 animation = "Winning"
@@ -29,7 +29,6 @@ animation = "Winning"
 [sub_resource type="AnimationNodeStateMachineTransition" id=7]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=8]
-advance_condition = "is_on_floor()"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=9]
 priority = 2
@@ -82,16 +81,16 @@ auto_advance = true
 states/Idle/node = SubResource( 1 )
 states/Idle/position = Vector2( 519, 170 )
 states/Jump/node = SubResource( 2 )
-states/Jump/position = Vector2( 998, 146 )
+states/Jump/position = Vector2( 997, 146 )
 states/Lose/node = SubResource( 3 )
 states/Lose/position = Vector2( 329, 102 )
 states/Schlag/node = SubResource( 4 )
 states/Schlag/position = Vector2( 693, 46 )
-states/WalkR/node = SubResource( 5 )
-states/WalkR/position = Vector2( 841, 272 )
+states/Walking/node = SubResource( 5 )
+states/Walking/position = Vector2( 840, 272 )
 states/Winning/node = SubResource( 6 )
 states/Winning/position = Vector2( 335, 234 )
-transitions = [ "Idle", "Jump", SubResource( 7 ), "Idle", "WalkR", SubResource( 8 ), "WalkR", "Idle", SubResource( 9 ), "WalkR", "Jump", SubResource( 10 ), "Jump", "WalkR", SubResource( 11 ), "Jump", "Idle", SubResource( 12 ), "Idle", "Schlag", SubResource( 13 ), "Schlag", "Idle", SubResource( 14 ), "Schlag", "Jump", SubResource( 15 ), "Jump", "Schlag", SubResource( 16 ), "Schlag", "WalkR", SubResource( 17 ), "WalkR", "Schlag", SubResource( 18 ), "Idle", "Lose", SubResource( 19 ), "Idle", "Winning", SubResource( 20 ), "Winning", "Idle", SubResource( 21 ), "Lose", "Idle", SubResource( 22 ) ]
+transitions = [ "Idle", "Jump", SubResource( 7 ), "Idle", "Walking", SubResource( 8 ), "Walking", "Idle", SubResource( 9 ), "Walking", "Jump", SubResource( 10 ), "Jump", "Walking", SubResource( 11 ), "Jump", "Idle", SubResource( 12 ), "Idle", "Schlag", SubResource( 13 ), "Schlag", "Idle", SubResource( 14 ), "Schlag", "Jump", SubResource( 15 ), "Jump", "Schlag", SubResource( 16 ), "Schlag", "Walking", SubResource( 17 ), "Walking", "Schlag", SubResource( 18 ), "Idle", "Lose", SubResource( 19 ), "Idle", "Winning", SubResource( 20 ), "Winning", "Idle", SubResource( 21 ), "Lose", "Idle", SubResource( 22 ) ]
 start_node = "Idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=24]
@@ -104,8 +103,8 @@ region_enabled = true
 region_rect = Rect2( 421.681, 20.085, 140, 290.969 )
 
 [node name="armR" type="Sprite" parent="Torso"]
-position = Vector2( -65.576, -105.257 )
-rotation = -0.0138372
+position = Vector2( -65.5694, -105.243 )
+rotation = -0.0139042
 z_index = 2
 texture = ExtResource( 1 )
 offset = Vector2( 0, 120 )
@@ -123,8 +122,8 @@ region_enabled = true
 region_rect = Rect2( 424.587, 336.908, 122, 335 )
 
 [node name="armL" type="Sprite" parent="Torso"]
-position = Vector2( 57.2559, -108.501 )
-rotation = -0.00450385
+position = Vector2( 57.2559, -108.494 )
+rotation = -0.00429867
 z_index = -1
 texture = ExtResource( 1 )
 offset = Vector2( 5, 130 )
@@ -146,7 +145,7 @@ region_enabled = true
 region_rect = Rect2( 91.876, 189.33, 123.338, 480 )
 
 [node name="head" type="Sprite" parent="Torso"]
-position = Vector2( -1.40109, -137.546 )
+position = Vector2( -1.29281, -136.949 )
 z_index = -1
 texture = ExtResource( 1 )
 offset = Vector2( 0, -60 )
@@ -158,7 +157,7 @@ anims/Idle = ExtResource( 3 )
 anims/Jump = ExtResource( 5 )
 anims/Lose = ExtResource( 7 )
 anims/Schlag = ExtResource( 4 )
-anims/WalkR = ExtResource( 2 )
+anims/Walking = ExtResource( 2 )
 anims/Winning = ExtResource( 6 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

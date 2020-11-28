@@ -90,6 +90,7 @@ states/Winning/node = SubResource( 6 )
 states/Winning/position = Vector2( 214, 77 )
 transitions = [ "Idle", "Schlag", SubResource( 7 ), "Schlag", "Walking", SubResource( 8 ), "Walking", "Jump", SubResource( 9 ), "Idle", "Jump", SubResource( 10 ), "Jump", "Idle", SubResource( 11 ), "Schlag", "Idle", SubResource( 12 ), "Walking", "Schlag", SubResource( 13 ), "Jump", "Walking", SubResource( 14 ), "Idle", "Walking", SubResource( 15 ), "Walking", "Idle", SubResource( 16 ), "Idle", "Winning", SubResource( 17 ), "Idle", "Lose", SubResource( 18 ), "Winning", "Idle", SubResource( 19 ), "Lose", "Idle", SubResource( 20 ), "Jump", "Schlag", SubResource( 21 ), "Schlag", "Jump", SubResource( 22 ) ]
 start_node = "Idle"
+graph_offset = Vector2( 0, -3.30567 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 
@@ -101,8 +102,8 @@ region_enabled = true
 region_rect = Rect2( 365, 7, 215, 390 )
 
 [node name="armL" type="Sprite" parent="Torso"]
-position = Vector2( 72.8471, -91.0383 )
-rotation = -0.0169036
+position = Vector2( 71.5168, -88.3776 )
+rotation = -0.00226896
 z_index = -1
 z_as_relative = false
 texture = ExtResource( 1 )
@@ -111,8 +112,8 @@ region_enabled = true
 region_rect = Rect2( 165.679, 0, 122.111, 387.364 )
 
 [node name="armR" type="Sprite" parent="Torso"]
-position = Vector2( -80.7773, -111.945 )
-rotation = 0.00173594
+position = Vector2( -80.7773, -110.614 )
+rotation = 0.000233014
 z_index = 2
 z_as_relative = false
 texture = ExtResource( 1 )
@@ -145,7 +146,7 @@ region_enabled = true
 region_rect = Rect2( 74, 239.846, 119, 449.154 )
 
 [node name="head" type="Sprite" parent="Torso"]
-position = Vector2( 3.54448, -184.904 )
+position = Vector2( 3.87706, -184.239 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, -70 )
 region_enabled = true

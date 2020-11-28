@@ -32,7 +32,7 @@ func _Steuerung(delta):
 		vel.x = min(vel.x-speed, -ACCELERATION)
 		Walk()
 	else:
-		if is_on_floor() and state_machine.get_current_node()== ("WalkR"):
+		if is_on_floor() and state_machine.get_current_node()== ("Walking"):
 			state_machine.travel("Idle")
 
 	# jump input
