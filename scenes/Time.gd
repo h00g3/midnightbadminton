@@ -17,7 +17,6 @@ func _process(delta):
 		set_Timer_color(Color(0.5,1,0,1))
 	
 	set_text(str(s)+":"+str(ms))
-pass
 
 func set_Timer_color(rgba):
 	self.add_color_override("font_color", rgba)
@@ -25,4 +24,4 @@ func set_Timer_color(rgba):
 func _on_Timer_timeout():
 	if s > 0 :
 		ms -= 1
-pass
+

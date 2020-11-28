@@ -26,27 +26,38 @@ func _Steuerung(delta):
 	
 	# movement inputs
 	if Input.is_action_pressed("2_right") and is_on_floor():
+		
 		vel.x = max(vel.x+speed, ACCELERATION)
 		Walk()
 	elif Input.is_action_pressed("2_left") :
 		vel.x = min(vel.x-speed, -ACCELERATION)
 		Walk()
 	else:
-		if is_on_floor() and state_machine.get_current_node()== ("Walking"):
+		if is_on_floor() and state_machine.get_current_node() == ("Walking"):
 			state_machine.travel("Idle")
 
 	# jump input
-	if Input.is_action_just_pressed("2_up") and is_on_floor():
-		vel.y -= jumpForce
-		Jump()
-		doublejump_zaehler = true
-	if Input.is_action_just_pressed("2_up") and is_on_floor() == false :
-		if doublejump_zaehler == true :
+#	if Input.is_action_just_pressed("2_up"):
+#		if doublejump_zaehler:
+#			doublejump_zaehler = false
+#		else
+#			doublejump_zaehler = true
+#		vel.y -= jumpForce
+#		Jump()
+#		if is_on_floor():
+
+	if Input.is_action_just_pressed("2_up"):
+		if is_on_floor():
+			vel.y -= jumpForce
+			Jump()
+			doublejump_zaehler = true
+		elif doublejump_zaehler == true :
 			vel.y -= jumpForce
 			Jump()
 			doublejump_zaehler = false
 	
 	# applying the velocity	
-	vel = move_and_slide(vel, Vector2.UP)
+#	var vector = Vector2(vel.normalized().x,-1)
 	#gravity
 	vel.y += gravity * delta
+	vel = move_and_slide(vel, Vector2.UP)

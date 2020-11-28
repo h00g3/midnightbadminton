@@ -35,6 +35,6 @@ func _Steuerung(delta):
 		vel.x += jumpForce
 		dashing = false
 	# applying the velocity
+	vel.y += gravity * delta
 	vel = move_and_slide(vel, Vector2.UP)
 	#gravity
-	vel.y += gravity * delta

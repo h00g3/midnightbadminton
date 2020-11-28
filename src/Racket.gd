@@ -13,6 +13,6 @@ func hit_shuttle(shuttle):
 	var x = 35000
 	if(side == Player.Side.RIGHT):
 		x = -x
-	var y = 35000
+	var y = -50000
 	var impulse = Vector2(x,y)
 	shuttle.apply_central_impulse(impulse)
