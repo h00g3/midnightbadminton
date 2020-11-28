@@ -30,9 +30,6 @@ func set_physics_body(body):
 func get_physics_body():
 	return physics_body
 
-#func set_side(_side):
-#	side = _side
-	
 func get_side():
 	return physics_body.get_side()
 
