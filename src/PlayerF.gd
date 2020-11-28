@@ -55,8 +55,4 @@ func _Steuerung(delta):
 			doublejump_zaehler = false
 	#gravity
 	vel.y += gravity * delta
-	# applying the velocity	
-#	var vector = Vector2(vel.normalized().x,-1)
-	#gravity
-	vel.y += gravity * delta
 	vel = move_and_slide(vel, Vector2.UP)
