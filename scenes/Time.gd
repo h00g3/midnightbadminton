@@ -1,7 +1,7 @@
 extends Label
 
 var ms = 0
-var s = 25
+var s = 60
 var m = 0
 
 signal TIMEOVER
@@ -25,7 +25,7 @@ func _process(delta):
 	set_text(str(s)+":"+str(ms))
 
 func reset_Timer():
-	s = 25
+	s = 60
 	ms = 0
 
 func set_Timer_color(rgba):

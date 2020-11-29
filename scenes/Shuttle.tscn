@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/Shuttle.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/shuttle_alpha.png" type="Texture" id=2]
 [ext_resource path="res://abschlag_gradient.tres" type="Gradient" id=3]
 [ext_resource path="res://Sprites/shuttle_occluderpolygon2d.res" type="OccluderPolygon2D" id=4]
+[ext_resource path="res://Audio/Midnight_Badminton_sounds_SHUTTLE.wav" type="AudioStream" id=5]
 
 [sub_resource type="PhysicsMaterial" id=1]
 bounce = 3.0
@@ -39,6 +40,7 @@ scale = Vector2( 33.3333, 33.3333 )
 occluder = ExtResource( 4 )
 
 [node name="Particles" type="CPUParticles2D" parent="."]
+emitting = false
 amount = 32
 lifetime = 0.5
 local_coords = false
@@ -47,18 +49,25 @@ emission_sphere_radius = 5.41
 gravity = Vector2( 0, -10 )
 
 [node name="Schlagpartikel" type="CPUParticles2D" parent="."]
+modulate = Color( 1, 1, 1, 0.803922 )
 emitting = false
 amount = 55
-lifetime = 0.2
+lifetime = 0.3
 one_shot = true
 explosiveness = 1.0
+randomness = 0.47
+lifetime_randomness = 0.48
 local_coords = false
 emission_shape = 1
-emission_sphere_radius = 21.64
+emission_sphere_radius = 0.72
 direction = Vector2( 0, 0 )
-spread = 21.77
-initial_velocity = 344.08
-initial_velocity_random = 0.64
-scale_amount = 2.0
-scale_amount_random = 0.29
+spread = 180.0
+initial_velocity = 184.67
+initial_velocity_random = 0.4
+scale_amount = 3.0
+scale_amount_random = 0.75
 color_ramp = ExtResource( 3 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+[connection signal="body_entered" from="." to="." method="_on_Shuttle_body_entered"]

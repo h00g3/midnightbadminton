@@ -11,7 +11,11 @@ var timeSpentOnGround = 0
 export (int) var winscore
 export (int) var satzno
 
+onready var name_title = $Scoreboard/EventTitleContainer/Sprite_unten
+onready var point_title = $Scoreboard/EventTitleContainer/Sprite_oben
+
 const SATZSPRITE = preload("res://scenes/SatzSprite.tscn")
+
 var formation = Vector2(5, 1)
 
 func _ready():
@@ -138,16 +142,57 @@ func other_side(side):
 	else:
 		return Player.Side.LEFT
 
+func decide_title_color(player):
+	if player.name == "Kenny" :
+		point_title.set_texture(load("res://Menue/POINT_red.png"))
+	else :
+		point_title.set_texture(load("res://Menue/point_black.png"))
+
+func apply_animation_textures(player, sequence):
+	var is_black : bool
+	if player.name == "Kenny" :
+		is_black = false
+	else :
+		is_black = true
+	
+	if sequence == "Point1" :
+		if is_black == false :
+			point_title.set_texture(load("res://Menue/POINT_red.png"))
+			name_title.set_texture(load("res://Menue/kenny_Title.png"))
+		else :
+			point_title.set_texture(load("res://Menue/point_black.png"))
+			name_title.set_texture(load("res://Menue/fanny_Title.png"))
+	elif sequence == "Totalwin1" :
+		if is_black == false :
+			point_title.set_texture(load("res://Menue/kenny_Title.png"))
+			name_title.set_texture(load("res://Menue/WINS_red.png"))
+		else :
+			point_title.set_texture(load("res://Menue/fanny_Title.png"))
+			name_title.set_texture(load("res://Menue/WINS_blue.png"))
+			
+	point_title.visible = true
+	name_title.visible = true
+
+func play_animation_and_sound(animation):
+	$Scoreboard/EventTitleContainer/AnimationPlayer.play(animation)
+	$AudioStreamPlayer.set_stream(load("res://Audio/sound_"+animation+".wav"))
+	$AudioStreamPlayer.play()
+
 func win(player):
 	player.score_satz()
 	count_satz(player)
 	print ("%s wins!" % player.name)
 	players[Player.Side.LEFT].reset_score()
 	players[Player.Side.RIGHT].reset_score()
+	apply_animation_textures(player, "Point1")
+	play_animation_and_sound("Point1")
 	#get_tree().reload_current_scene()
 	
 func total_win(player):
 	$Scoreboard/StatusLabel.text = "%s gewinnt das Spiel!" % player.name
+	apply_animation_textures(player, "Totalwin1")
+	play_animation_and_sound("Totalwin1")
+
 	players[Player.Side.LEFT].reset_all()
 	players[Player.Side.RIGHT].reset_all()
 	remove_satz_sprites()
@@ -186,17 +231,23 @@ func add_base_satz_sprites():
 		add_satz_sprite(i, -30, 655, 160, 0.044, Color(0,0,0,0.2))
 		add_satz_sprite(i, 30, 800, 200, 0.044, Color(0,0,0,0.2))
 func add_satz_sprite(y, direction, pos, rot, scale, color) :
-		var new_satzsprite_pos = Vector2(0, 20)
-		new_satzsprite_pos.x = y*(direction)
-		var new_satzsprite = SATZSPRITE.instance()
-		new_satzsprite.rotation_degrees = rot
-		new_satzsprite.position = new_satzsprite_pos + Vector2(pos, 0)
-		new_satzsprite.scale = Vector2(scale, scale)
-		new_satzsprite.modulate = color
-		$Scoreboard.add_child(new_satzsprite)
+	var new_satzsprite_pos = Vector2(0, 20)
+	new_satzsprite_pos.x = y*(direction)
+	var new_satzsprite = SATZSPRITE.instance()
+	new_satzsprite.rotation_degrees = rot
+	new_satzsprite.position = new_satzsprite_pos + Vector2(pos, 0)
+	new_satzsprite.scale = Vector2(scale, scale)
+	new_satzsprite.modulate = color
+	$Scoreboard.add_child(new_satzsprite)
 func remove_satz_sprites():
 	var scoreboard = get_node("Scoreboard")
 	for child in scoreboard.get_children() :
 		print (child.get_name())
 		if child.get_name().begins_with("@SatzSprite") :
 			child.free()
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	point_title.visible = false
+	name_title.visible = false
+	pass # Replace with function body.

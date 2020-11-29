@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://src/MainLevel.gd" type="Script" id=1]
 [ext_resource path="res://src/PlayerK.gd" type="Script" id=2]
@@ -19,27 +19,31 @@
 [ext_resource path="res://Audio/Midnight_Badminton_sounds_F.wav" type="AudioStream" id=17]
 [ext_resource path="res://Sprites/lights_v2_blobs.png" type="Texture" id=18]
 [ext_resource path="res://scenes/Kenny.tscn" type="PackedScene" id=19]
-[ext_resource path="res://scenes/SatzSprite.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Menue/WINS_blue.png" type="Texture" id=20]
 [ext_resource path="res://Audio/Midnight_Badminton_sounds_K.wav" type="AudioStream" id=21]
+[ext_resource path="res://Audio/Midnight_Badminton_sounds_SHUTTLE.wav" type="AudioStream" id=22]
+[ext_resource path="res://Menue/fanny_Title.png" type="Texture" id=23]
+[ext_resource path="res://Audio/sound_Point1.wav" type="AudioStream" id=24]
+[ext_resource path="res://Audio/music1.wav" type="AudioStream" id=25]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 23.7809
 height = 80.0
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 66.2908
-height = 97.1746
+radius = 34.5512
+height = 28.0053
 
-[sub_resource type="CapsuleShape2D" id=3]
-radius = 21.7361
-height = 93.4232
+[sub_resource type="OccluderPolygon2D" id=3]
+polygon = PoolVector2Array( 1495.37, 500.498, 1505.46, 496.083, 1517.51, 498.786, 1521.29, 523.803, 1514.56, 525.695, 1520.24, 526.746, 1518.85, 578.629, 1522.1, 647.651, 1488.89, 649.332, 1491.71, 576.034, 1486.36, 546.743, 1489.18, 528.164, 1494.68, 526.664, 1490.18, 511.664 )
 
 [sub_resource type="CapsuleShape2D" id=4]
-radius = 73.077
-height = 108.023
+radius = 21.7361
+height = 106.422
 
-[sub_resource type="OccluderPolygon2D" id=5]
-polygon = PoolVector2Array( 1495.37, 500.498, 1505.46, 496.083, 1516.61, 503.861, 1517.87, 525.304, 1511.14, 531.401, 1527.54, 540.23, 1528.78, 679.851, 1485.89, 680.692, 1483.6, 544.014, 1498.95, 534.764, 1493.27, 513.742 )
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 35.134
+height = 76.5648
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 8, 110.632 )
@@ -61,10 +65,114 @@ extents = Vector2( 10, 451.657 )
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 747.203, 10 )
 
+[sub_resource type="Animation" id=12]
+resource_name = "Point1"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite_oben:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1000, -23.938 ), Vector2( -30, -23.938 ), Vector2( 30, -23.938 ), Vector2( 1000, -23.938 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite_unten:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1000, 62.109 ), Vector2( 30, 62.109 ), Vector2( -30, 62.109 ), Vector2( -1000, 62.109 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite_oben:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite_unten:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "Totalwin1"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite_oben:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 3.8147e-06, -23.938 ), Vector2( 0, -27 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite_oben:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.1, 0.1 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 0.1, 0.1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite_unten:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.1, 0.1 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 0.1, 0.1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite_unten:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 30 ), Vector2( -3.8147e-06, 62.109 ) ]
+}
+
 [node name="MainLevel" type="Node2D"]
 z_as_relative = false
 script = ExtResource( 1 )
-winscore = 3
+winscore = 2
 satzno = 3
 
 [node name="PlayerF" type="KinematicBody2D" parent="."]
@@ -84,7 +192,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerF/Area2D"]
-position = Vector2( 199.068, 566.965 )
+position = Vector2( 199.663, 546.748 )
 shape = SubResource( 2 )
 one_way_collision = true
 
@@ -99,18 +207,29 @@ __meta__ = {
 }
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PlayerF"]
+position = Vector2( 720, 0 )
 stream = ExtResource( 17 )
+volume_db = -3.0
 attenuation = 0.07966
+
+[node name="RacketAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PlayerF"]
+position = Vector2( 720, 0 )
+stream = ExtResource( 22 )
+attenuation = 0.07966
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="PlayerF"]
+position = Vector2( -1308.68, 10.8361 )
+occluder = SubResource( 3 )
 
 [node name="PlayerK" type="KinematicBody2D" parent="."]
 script = ExtResource( 2 )
 
 [node name="Collider" type="CollisionShape2D" parent="PlayerK"]
-position = Vector2( 1100, 564.173 )
-shape = SubResource( 3 )
+position = Vector2( 1100.35, 556.934 )
+shape = SubResource( 4 )
 
 [node name="Node2D" parent="PlayerK" instance=ExtResource( 19 )]
-position = Vector2( 1099.56, 568.041 )
+position = Vector2( 1099.56, 553 )
 scale = Vector2( 0.2, 0.2 )
 
 [node name="Area2D" type="Area2D" parent="PlayerK"]
@@ -118,15 +237,22 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerK/Area2D"]
-position = Vector2( 1096.02, 564.271 )
-shape = SubResource( 4 )
+position = Vector2( 1100.45, 543.352 )
+shape = SubResource( 5 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="PlayerK"]
-position = Vector2( -405.312, 0 )
-occluder = SubResource( 5 )
+position = Vector2( -405.312, -15 )
+occluder = SubResource( 3 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PlayerK"]
+position = Vector2( 720, 0 )
 stream = ExtResource( 21 )
+volume_db = -3.0
+attenuation = 0.07966
+
+[node name="RacketAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PlayerK"]
+position = Vector2( 720, 0 )
+stream = ExtResource( 22 )
 attenuation = 0.07966
 
 [node name="Netz" type="StaticBody2D" parent="."]
@@ -167,10 +293,6 @@ shape = SubResource( 10 )
 [node name="Decke" type="CollisionShape2D" parent="WandL"]
 position = Vector2( 721.814, -273.824 )
 shape = SubResource( 11 )
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-offset = Vector2( 720, 360 )
-transform = Transform2D( 1, 0, 0, 1, 720, 360 )
 
 [node name="Scoreboard" type="Control" parent="."]
 margin_right = 40.0
@@ -241,9 +363,6 @@ scale = Vector2( 0.454367, 0.464427 )
 color = Color( 0.133333, 0.121569, 0.121569, 1 )
 polygon = PoolVector2Array( -60.0493, -28.5006, -37.3867, 18.722, 49.4541, 18.754, 73.5145, -29.0304 )
 
-[node name="SatzSprite" parent="Scoreboard" instance=ExtResource( 20 )]
-visible = false
-
 [node name="StatusLabel" type="Label" parent="Scoreboard"]
 margin_left = 670.0
 margin_top = 50.0
@@ -255,30 +374,53 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="EventTitleContainer" type="VBoxContainer" parent="Scoreboard"]
+margin_left = 729.289
+margin_top = 172.488
+margin_right = 769.289
+margin_bottom = 212.488
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite_oben" type="Sprite" parent="Scoreboard/EventTitleContainer"]
+visible = false
+position = Vector2( 1000, -23.938 )
+texture = ExtResource( 23 )
+
+[node name="Sprite_unten" type="Sprite" parent="Scoreboard/EventTitleContainer"]
+visible = false
+position = Vector2( -1000, 62.109 )
+texture = ExtResource( 20 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Scoreboard/EventTitleContainer"]
+anims/Point1 = SubResource( 12 )
+anims/Totalwin1 = SubResource( 13 )
+
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 720, 382 )
 z_index = -2
 z_as_relative = false
 
 [node name="Light2D" type="Light2D" parent="Background"]
-position = Vector2( -450, -60 )
+position = Vector2( -457.127, -59.1091 )
 scale = Vector2( 1.3, 1.3 )
 texture = ExtResource( 15 )
-energy = 0.3
+energy = 0.5
 range_height = 1.0
 shadow_enabled = true
-shadow_gradient_length = 10.0
+shadow_gradient_length = 100.0
 shadow_filter = 2
 shadow_filter_smooth = 30.0
 
 [node name="Light2D2" type="Light2D" parent="Background"]
-position = Vector2( 255, -70 )
+position = Vector2( 253.586, -62.9289 )
 scale = Vector2( 1.3, 1.3 )
 texture = ExtResource( 15 )
-energy = 0.3
+energy = 0.5
 range_height = 1.0
 shadow_enabled = true
-shadow_gradient_length = 10.0
+shadow_gradient_length = 100.0
 shadow_filter = 2
 shadow_filter_smooth = 30.0
 
@@ -288,6 +430,7 @@ z_index = 6
 texture = ExtResource( 18 )
 
 [node name="Blue_BG" type="Sprite" parent="Background"]
+modulate = Color( 0.8, 0.8, 0.8, 1 )
 texture = ExtResource( 6 )
 
 [node name="Stars" type="Sprite" parent="Background"]
@@ -300,6 +443,7 @@ texture = ExtResource( 10 )
 texture = ExtResource( 13 )
 
 [node name="Haeuser" type="Sprite" parent="Background"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
 position = Vector2( 0.902527, 0 )
 texture = ExtResource( 7 )
 
@@ -327,8 +471,17 @@ texture = ExtResource( 14 )
 [node name="SpriteLight" type="Sprite" parent="Background"]
 z_index = 6
 texture = ExtResource( 18 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
+volume_db = -10.0
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 25 )
+volume_db = -12.0
 [connection signal="body_entered" from="PlayerF/Area2D" to="PlayerF" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="PlayerK/Area2D" to="PlayerK" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Boden/Links" to="." method="_on_Links_body_entered"]
 [connection signal="body_entered" from="Boden/Rechts" to="." method="_on_Rechts_body_entered"]
 [connection signal="timeout" from="Scoreboard/Time/Timer" to="Scoreboard/Time" method="_on_Timer_timeout"]
+[connection signal="animation_finished" from="Scoreboard/EventTitleContainer/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

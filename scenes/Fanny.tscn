@@ -46,7 +46,6 @@ switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=13]
-switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=14]
 switch_mode = 2
@@ -92,6 +91,7 @@ states/Winning/node = SubResource( 6 )
 states/Winning/position = Vector2( 335, 234 )
 transitions = [ "Idle", "Jump", SubResource( 7 ), "Idle", "Walking", SubResource( 8 ), "Walking", "Idle", SubResource( 9 ), "Walking", "Jump", SubResource( 10 ), "Jump", "Walking", SubResource( 11 ), "Jump", "Idle", SubResource( 12 ), "Idle", "Schlag", SubResource( 13 ), "Schlag", "Idle", SubResource( 14 ), "Schlag", "Jump", SubResource( 15 ), "Jump", "Schlag", SubResource( 16 ), "Schlag", "Walking", SubResource( 17 ), "Walking", "Schlag", SubResource( 18 ), "Idle", "Lose", SubResource( 19 ), "Idle", "Winning", SubResource( 20 ), "Winning", "Idle", SubResource( 21 ), "Lose", "Idle", SubResource( 22 ) ]
 start_node = "Idle"
+graph_offset = Vector2( 0, 32.76 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 
@@ -103,8 +103,8 @@ region_enabled = true
 region_rect = Rect2( 421.681, 20.085, 140, 290.969 )
 
 [node name="armR" type="Sprite" parent="Torso"]
-position = Vector2( -65.5694, -105.243 )
-rotation = -0.0139042
+position = Vector2( -65.8044, -105.768 )
+rotation = -0.0114991
 z_index = 2
 texture = ExtResource( 1 )
 offset = Vector2( 0, 120 )
@@ -122,8 +122,8 @@ region_enabled = true
 region_rect = Rect2( 424.587, 336.908, 122, 335 )
 
 [node name="armL" type="Sprite" parent="Torso"]
-position = Vector2( 57.2559, -108.494 )
-rotation = -0.00429867
+position = Vector2( 57.2559, -108.743 )
+rotation = -0.0116708
 z_index = -1
 texture = ExtResource( 1 )
 offset = Vector2( 5, 130 )
@@ -145,7 +145,7 @@ region_enabled = true
 region_rect = Rect2( 91.876, 189.33, 123.338, 480 )
 
 [node name="head" type="Sprite" parent="Torso"]
-position = Vector2( -1.29281, -136.949 )
+position = Vector2( -1.39633, -137.519 )
 z_index = -1
 texture = ExtResource( 1 )
 offset = Vector2( 0, -60 )

@@ -43,4 +43,3 @@ func calculate_y_impulse(player):
 	else:
 		print("%s \t on ground %s" % [player.side, player.get_velocity()])
 		return average_y_impulse
-

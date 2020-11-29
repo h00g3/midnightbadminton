@@ -6,11 +6,12 @@ onready var racket = load("res://src/Racket.gd").new()
 
 onready var state_machine = $Node2D/AnimationTree.get("parameters/playback")
 onready var player_sounds = $AudioStreamPlayer2D
+onready var racket_audio = $RacketAudioStreamPlayer2D
 
 var audio_attacks = Vector2(1,4)
 var audio_yays = Vector2(5,9)
 var audio_ojes = Vector2(10,14)
-var audio_schlaege = Vector2(1,6)
+var audio_schlaege = Vector2(0,6)
 
 onready var randomi = 0
 
@@ -31,15 +32,20 @@ func make_random_nr(von, bis) :
 	randomi = rng.randi_range(von, bis)
 	return randomi
 	
-func PlayAudio(start_tc, length) :
+func PlayerAudio(start_tc, end_tc, length) :
 	if player_sounds.playing == false :
-		player_sounds.play(start_tc)
+		player_sounds.play(make_random_nr(start_tc, end_tc))
 		yield(get_tree().create_timer(length), "timeout")
 		player_sounds.stop()
 
+func RacketAudio(start_tc, end_tc, length) :
+	racket_audio.play(make_random_nr(start_tc, end_tc))
+	yield(get_tree().create_timer(length), "timeout")
+	racket_audio.stop()
+
 func Jump():
 	state_machine.travel("Jump")
-	PlayAudio(make_random_nr(audio_attacks.x, audio_attacks.y),0.5)
+	PlayerAudio(audio_attacks.x, audio_attacks.y,0.5)
 
 func Walk():
 	if state_machine.get_current_node() != ("Walking"):
@@ -47,23 +53,25 @@ func Walk():
 
 func Schlag():
 	state_machine.travel("Schlag")
-	PlayAudio(make_random_nr(audio_schlaege.x, audio_schlaege.y),1)
+	RacketAudio(audio_schlaege.x, audio_schlaege.y,1)
+	PlayerAudio(audio_attacks.x, audio_attacks.y,0.5)
 
 func Cheer():
 	state_machine.travel("Winning")
-	PlayAudio(make_random_nr(audio_yays.x, audio_yays.y),1)
+	PlayerAudio(audio_yays.x, audio_yays.y,1)
 
 func Sad():
 	state_machine.travel("Lose")
-	PlayAudio(make_random_nr(audio_ojes.x, audio_ojes.y),1)
+	PlayerAudio(audio_ojes.x, audio_ojes.y,1)
 
 func _on_Area2D_body_entered(body):
+	
 	if isShuttle(body):
 		Schlag()
 		racket.hit_shuttle(body, self)
 		var timer = get_parent().get_node("Scoreboard/Time/Timer")
 		timer.start()
-		
+
 func isShuttle(body):
 	return body.get_name() == "Shuttle"
 
