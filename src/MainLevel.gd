@@ -18,6 +18,8 @@ const SATZSPRITE = preload("res://scenes/SatzSprite.tscn")
 
 var formation = Vector2(5, 1)
 
+onready var night_mode_bool = false
+
 func _ready():
 	$PlayerK/Node2D.scale.x = -$PlayerK/Node2D.scale.x # Mirror Player
 	$Scoreboard/Time.connect("TIMEOVER", self, "_on_Timer_Timeout")
@@ -32,7 +34,10 @@ func add_player(name, physics_body, side):
 
 func add_shuttle():
 	if shuttle == null:
-		shuttle = load("res://scenes/Shuttle.tscn").instance()
+		if night_mode_bool == true :
+			shuttle = load("res://scenes/ShuttleNight.tscn").instance()
+		else :
+			shuttle = load("res://scenes/Shuttle.tscn").instance()
 
 func delete_shuttle():
 	if shuttle != null:
@@ -211,6 +216,21 @@ func total_win(player):
 	players[Player.Side.RIGHT].reset_all()
 	remove_satz_sprites()
 	add_base_satz_sprites()
+	if night_mode_bool :
+		night_mode(false)
+	else :
+		night_mode(true)
+
+func night_mode(trueorfalse) :
+	if trueorfalse :
+		$Background/AnimationPlayer.play("NightModeOn")
+		$MusicPlayer.play(0.0)
+	else :
+		$Background/AnimationPlayer.play_backwards("NightModeOn")
+		$MusicPlayer.stop()
+	
+	night_mode_bool = trueorfalse
+	return night_mode_bool
 
 func show_scores():
 	$Scoreboard/Fscore.text = str(players[Player.Side.LEFT].score)

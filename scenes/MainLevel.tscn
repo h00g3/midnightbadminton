@@ -352,6 +352,30 @@ tracks/13/keys = {
 "update": 0,
 "values": [ Color( 0.305882, 0.305882, 0.305882, 0 ), Color( 0.305882, 0.305882, 0.305882, 1 ) ]
 }
+tracks/14/type = "value"
+tracks/14/path = NodePath("../PlayerF/Node2D:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.556863, 0.556863, 0.556863, 1 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("../PlayerK/Node2D:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.556863, 0.556863, 0.556863, 1 ) ]
+}
 
 [node name="MainLevel" type="Node2D"]
 z_as_relative = false
@@ -602,8 +626,8 @@ texture = ExtResource( 15 )
 energy = 0.5
 range_height = 1.0
 shadow_enabled = true
-shadow_gradient_length = 100.0
-shadow_filter = 2
+shadow_gradient_length = 50.0
+shadow_filter = 3
 shadow_filter_smooth = 30.0
 
 [node name="Light2D2" type="Light2D" parent="Background"]
@@ -613,8 +637,8 @@ texture = ExtResource( 15 )
 energy = 0.5
 range_height = 1.0
 shadow_enabled = true
-shadow_gradient_length = 100.0
-shadow_filter = 2
+shadow_gradient_length = 50.0
+shadow_filter = 3
 shadow_filter_smooth = 30.0
 
 [node name="SpriteLight" type="Sprite" parent="Background/Light2D2"]

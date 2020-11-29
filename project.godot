@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Midnight Badminton"
-run/main_scene="res://scenes/MainLevel.tscn"
+run/main_scene="res://scenes/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [display]
