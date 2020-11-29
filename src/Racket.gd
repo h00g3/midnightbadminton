@@ -1,7 +1,7 @@
 class_name Racket
 
 var maximum_x_impulse = 70000
-var minimum_x_impulse = 20000
+var minimum_x_impulse = 10000
 var average_x_impulse = 35000
 
 var minimum_y_impulse = -20000
