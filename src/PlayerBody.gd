@@ -3,6 +3,9 @@ extends KinematicBody2D
 class_name PlayerBody
 
 onready var racket = load("res://src/Racket.gd").new()
+onready var head = find_node("head")
+const MAX_ANGLE_LOOK_UP = -0.75
+const MAX_ANGLE_LOOK_DOWN = 1
 
 onready var state_machine = $Node2D/AnimationTree.get("parameters/playback")
 onready var player_sounds = $AudioStreamPlayer2D
@@ -64,8 +67,28 @@ func Sad():
 	state_machine.travel("Lose")
 	PlayerAudio(audio_ojes.x, audio_ojes.y,1)
 
-func _on_Area2D_body_entered(body):
+func stare_at(point):
+	var angle = head.get_angle_to(point)
+	print("%s %s" % [side, angle])
+	var rotation = 0
+	if is_left():
+		if(angle < 0):
+			rotation = max(angle, MAX_ANGLE_LOOK_UP)
+		else:
+			rotation = min(angle, MAX_ANGLE_LOOK_DOWN)
+	else:
+		if(angle > -1.5):
+			rotation = max(angle, -0.25)
+		else:
+			rotation = max(angle, -PI*0.75)
+	head.rotate(rotation)
 	
+#	if look_position.x < players[Player.Side.LEFT].get_body_position().x :
+#		F_head.flip_h = true
+#	else:
+#		F_head.flip_h = false
+
+func _on_Area2D_body_entered(body):
 	if isShuttle(body):
 		Schlag()
 		racket.hit_shuttle(body, self)
@@ -80,6 +103,9 @@ func get_velocity():
 
 func is_right():
 	return side == Player.Side.RIGHT
+	
+func is_left():
+	return side == Player.Side.LEFT
 
 func is_moving_towards_net():
 	return (side == Player.Side.LEFT and is_moving_right()) or (side == Player.Side.RIGHT and is_moving_left())

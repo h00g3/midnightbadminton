@@ -52,7 +52,7 @@ func get_side():
 
 func get_body_position():
 	var collisionShape = getPlayerCollisionShape()
-	return collisionShape.position
+	return collisionShape.get_global_position()
 
 func getPlayerCollisionShape():
 	for child in physics_body.get_children():

@@ -18,10 +18,12 @@ func _Steuerung(delta):
 	# movement inputs
 	if Input.is_action_pressed("ui_right"):
 		vel.x = max(vel.x+speed, ACCELERATION)
-		Walk()
+		if is_on_floor():
+			Walk()
 	elif Input.is_action_pressed("ui_left"):
 		vel.x = min(vel.x-speed, -ACCELERATION)
-		Walk()
+		if is_on_floor():
+			Walk()
 	else:
 		if is_on_floor() and state_machine.get_current_node()== ("Walking"):
 			state_machine.travel("Idle")

@@ -2,8 +2,8 @@ extends Node2D
 
 onready var players = {}
 onready var shuttle = null
-onready var service_side = Player.Side.LEFT
-onready var serviceOffset = Vector2(0,-200)
+onready var service_side = Player.Side.RIGHT
+onready var serviceOffset = Vector2(-50,-50)
 
 var shuttle_hit_ground = false
 var timeSpentOnGround = 0
@@ -69,7 +69,7 @@ func _process(delta):
 		shuttle.set_mode(RigidBody2D.MODE_RIGID)
 		shuttle.apply_central_impulse(Vector2(0,-20000))
 	show_scores()
-	stare_at_shuttle()
+	players_stare_at_shuttle()
 	
 func _on_Timer_Timeout():
 	if players[Player.Side.LEFT].score > players[Player.Side.RIGHT].score :
@@ -205,19 +205,11 @@ func show_scores():
 func isShuttle(body):
 	return body.get_name() == "Shuttle"
 
-func stare_at_shuttle():
+func players_stare_at_shuttle():
 	var look_position = shuttle.global_position
-	var F_head = $PlayerF/Node2D/Torso/head
-	var K_head = $PlayerK/Node2D/Torso/head
-	
-	if look_position.x < $PlayerF.global_position.x :
-		F_head.flip_h = true
-	else:
-		F_head.flip_h = false
-		
-	F_head.look_at(look_position)
-	K_head.look_at(look_position)
-	
+	for player in players.values():
+		player.get_physics_body().stare_at(look_position)
+
 func count_satz(player):
 	var satz_status = Vector2(players[Player.Side.LEFT].score_satz, players[Player.Side.RIGHT].score_satz)
 	$Scoreboard/StatusLabel.text = "Stand: "+(str(satz_status.x)+" : "+(str(satz_status.y)))

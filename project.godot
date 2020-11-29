@@ -81,6 +81,11 @@ restart={
  ]
 }
 
+[logging]
+
+file_logging/enable_file_logging=true
+file_logging/log_path="res://logs/log.txt"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
