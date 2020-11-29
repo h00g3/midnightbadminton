@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://src/MainLevel.gd" type="Script" id=1]
 [ext_resource path="res://src/PlayerK.gd" type="Script" id=2]
@@ -25,6 +25,10 @@
 [ext_resource path="res://Menue/fanny_Title.png" type="Texture" id=23]
 [ext_resource path="res://Audio/sound_Point1.wav" type="AudioStream" id=24]
 [ext_resource path="res://Audio/music1.wav" type="AudioStream" id=25]
+[ext_resource path="res://Menue/matchball_Title_black.png" type="Texture" id=26]
+[ext_resource path="res://Menue/matchball_Title_red.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/LEVEL1/Haeuser_dunkel.png" type="Texture" id=28]
+[ext_resource path="res://Sprites/LEVEL1/street.png" type="Texture" id=29]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 23.7809
@@ -119,7 +123,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=13]
 resource_name = "Totalwin1"
-length = 2.0
+length = 2.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite_oben:position")
 tracks/0/interp = 1
@@ -127,7 +131,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.8 ),
+"times": PoolRealArray( 0, 2.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 3.8147e-06, -23.938 ), Vector2( 0, -27 ) ]
@@ -139,7 +143,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 1.8, 2 ),
+"times": PoolRealArray( 0, 0.2, 2.2, 2.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.1, 0.1 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 0.1, 0.1 ) ]
@@ -151,7 +155,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5, 1.9, 2 ),
+"times": PoolRealArray( 0, 0.3, 2.3, 2.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.1, 0.1 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 0.1, 0.1 ) ]
@@ -163,10 +167,190 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 30 ), Vector2( -3.8147e-06, 62.109 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=14]
+animations = [ {
+"frames": [ ExtResource( 26 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=15]
+resource_name = "NightModeOn"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Light2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.5, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Light2D2:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.5, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Haeuser:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.831373, 0.831373, 0.831373, 1 ), Color( 0.223529, 0.223529, 0.223529, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Blue_BG:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.8, 0.8, 0.8, 1 ), Color( 0.27451, 0.27451, 0.27451, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Wahrzeichen:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.203922, 0.203922, 0.203922, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Light2D2/SpriteLight:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("SpriteLight:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Lampen/SpriteGlow:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.423529 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Haeuser:texture")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ), ExtResource( 28 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Zaun:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.317647, 0.317647, 0.317647, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Horizont:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.352941, 0.352941, 0.352941, 1 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Lampen:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.262745, 0.262745, 0.262745, 1 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Netz:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.266667, 0.266667, 0.266667, 1 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Street:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.305882, 0.305882, 0.305882, 0 ), Color( 0.305882, 0.305882, 0.305882, 1 ) ]
 }
 
 [node name="MainLevel" type="Node2D"]
@@ -385,17 +569,26 @@ __meta__ = {
 
 [node name="Sprite_oben" type="Sprite" parent="Scoreboard/EventTitleContainer"]
 visible = false
-position = Vector2( 1000, -23.938 )
+position = Vector2( -1000, -23.938 )
 texture = ExtResource( 23 )
 
 [node name="Sprite_unten" type="Sprite" parent="Scoreboard/EventTitleContainer"]
 visible = false
-position = Vector2( -1000, 62.109 )
+position = Vector2( 1000, 62.109 )
 texture = ExtResource( 20 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Scoreboard/EventTitleContainer"]
 anims/Point1 = SubResource( 12 )
 anims/Totalwin1 = SubResource( 13 )
+
+[node name="MatchballAnimatedSprite" type="AnimatedSprite" parent="Scoreboard"]
+visible = false
+position = Vector2( 1280, 28 )
+scale = Vector2( 0.29, 0.29 )
+frames = SubResource( 14 )
+frame = 1
+speed_scale = 0.3
+playing = true
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 720, 382 )
@@ -425,27 +618,36 @@ shadow_filter = 2
 shadow_filter_smooth = 30.0
 
 [node name="SpriteLight" type="Sprite" parent="Background/Light2D2"]
-visible = false
+position = Vector2( -195.136, 48.3522 )
+scale = Vector2( 0.775167, 0.775167 )
 z_index = 6
 texture = ExtResource( 18 )
 
 [node name="Blue_BG" type="Sprite" parent="Background"]
 modulate = Color( 0.8, 0.8, 0.8, 1 )
+light_mask = 2
 texture = ExtResource( 6 )
 
 [node name="Stars" type="Sprite" parent="Background"]
+light_mask = 2
 texture = ExtResource( 8 )
 
-[node name="Wahrzeichen" type="Sprite" parent="Background"]
-texture = ExtResource( 10 )
-
 [node name="Horizont" type="Sprite" parent="Background"]
+light_mask = -2147483646
 texture = ExtResource( 13 )
 
+[node name="Wahrzeichen" type="Sprite" parent="Background"]
+light_mask = 2
+texture = ExtResource( 10 )
+
 [node name="Haeuser" type="Sprite" parent="Background"]
-modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+modulate = Color( 0.831373, 0.831373, 0.831373, 1 )
 position = Vector2( 0.902527, 0 )
 texture = ExtResource( 7 )
+
+[node name="Street" type="Sprite" parent="Background"]
+modulate = Color( 0.305882, 0.305882, 0.305882, 0 )
+texture = ExtResource( 29 )
 
 [node name="Lampen" type="Sprite" parent="Background"]
 texture = ExtResource( 9 )
@@ -456,7 +658,6 @@ show_behind_parent = true
 texture = ExtResource( 16 )
 
 [node name="Shadow_street" type="Sprite" parent="Background"]
-visible = false
 z_index = 2
 texture = ExtResource( 11 )
 
@@ -472,13 +673,16 @@ texture = ExtResource( 14 )
 z_index = 6
 texture = ExtResource( 18 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
+anims/NightModeOn = SubResource( 15 )
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 24 )
 volume_db = -10.0
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 25 )
-volume_db = -12.0
+volume_db = -15.0
 [connection signal="body_entered" from="PlayerF/Area2D" to="PlayerF" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="PlayerK/Area2D" to="PlayerK" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Boden/Links" to="." method="_on_Links_body_entered"]

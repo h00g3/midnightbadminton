@@ -116,17 +116,31 @@ func shuttle_hit_ground(body, side):
 		service_side = side
 		shuttle_hit_ground = true
 
+func draw_matchball():
+	var scoreboard_matchball = get_node("Scoreboard/MatchballAnimatedSprite")
+	if players[Player.Side.LEFT].score > players[Player.Side.RIGHT].score :
+		scoreboard_matchball.position = Vector2(155,28)
+		scoreboard_matchball.visible = true
+	elif players[Player.Side.LEFT].score < players[Player.Side.RIGHT].score :
+		scoreboard_matchball.position = Vector2(1280,28)
+		scoreboard_matchball.visible = true
+	else:
+		scoreboard_matchball.visible = false
+
 func score(scoring_side):
 	score_animations(scoring_side)
 	var player = players[scoring_side]
 	var score = player.score()
+	draw_matchball()
 	$Scoreboard/StatusLabel.text = "Punkt für %s!" % player.name
 	
 	if score >= winscore:
 		if two_score_difference() :
 			win(player)
+			draw_matchball()
 	if player.get_score_satz() >= satzno :
 		total_win(player)
+		draw_matchball()
 
 func two_score_difference() :
 	var difference = players[Player.Side.LEFT].score - players[Player.Side.RIGHT].score
@@ -250,4 +264,3 @@ func remove_satz_sprites():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	point_title.visible = false
 	name_title.visible = false
-	pass # Replace with function body.
