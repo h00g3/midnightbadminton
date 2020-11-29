@@ -23,26 +23,17 @@ func _physics_process(delta):
 func _Steuerung(delta):	
 	
 	# movement inputs
-	if Input.is_action_pressed("2_right") and is_on_floor():
-		
+	if Input.is_action_pressed("2_right"):
 		vel.x = max(vel.x+speed, ACCELERATION)
-		Walk()
+		if is_on_floor():
+			Walk()
 	elif Input.is_action_pressed("2_left") :
 		vel.x = min(vel.x-speed, -ACCELERATION)
-		Walk()
+		if is_on_floor():
+			Walk()
 	else:
 		if is_on_floor() and state_machine.get_current_node() == ("Walking"):
 			state_machine.travel("Idle")
-
-	# jump input
-#	if Input.is_action_just_pressed("2_up"):
-#		if doublejump_zaehler:
-#			doublejump_zaehler = false
-#		else
-#			doublejump_zaehler = true
-#		vel.y -= jumpForce
-#		Jump()
-#		if is_on_floor():
 
 	if Input.is_action_just_pressed("2_up"):
 		if is_on_floor():
