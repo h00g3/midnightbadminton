@@ -2,8 +2,7 @@ extends Node2D
 
 onready var players = {}
 onready var shuttle = null
-onready var service_side = Player.Side.RIGHT
-onready var serviceOffset = Vector2(-50,-50)
+onready var service_side = Player.Side.LEFT
 
 var shuttle_hit_ground = false
 var timeSpentOnGround = 0
@@ -47,7 +46,8 @@ func delete_shuttle():
 func service():
 	shuttle.set_mode(RigidBody2D.MODE_STATIC)
 	parent_shuttle_with_service_player()
-	shuttle.set_position(serviceOffset)
+	var service_offset = players[service_side].get_service_offset()
+	shuttle.set_position(service_offset)
 
 func parent_shuttle_with_service_player():
 	var player_shape = get_service_player_shape()

@@ -6,11 +6,20 @@ var name = "Player" setget set_name, get_name
 var score = 0 setget ,get_score
 var score_satz = 0 setget ,get_score_satz
 var physics_body setget set_physics_body, get_physics_body
+var service_offset setget , get_service_offset
 
 func _init(_name, body, _side):
 	name = _name
 	physics_body = body
 	body.set_side(_side)
+	set_service_offset(_side)
+
+func set_service_offset(side):
+	var y = -50
+	var x = 50
+	if(side == Side.RIGHT):
+		x = -x
+	service_offset = Vector2(x,y)
 
 func set_name(_name):
 	name = _name
@@ -46,6 +55,9 @@ func set_physics_body(body):
 
 func get_physics_body():
 	return physics_body
+
+func get_service_offset():
+	return service_offset
 
 func get_side():
 	return physics_body.get_side()
