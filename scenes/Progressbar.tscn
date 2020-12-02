@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Progressbar.gd" type="Script" id=1]
+[ext_resource path="res://Menue/progressbar_idle.png" type="Texture" id=2]
+[ext_resource path="res://Menue/progressbar_flames.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "ProgressShake"
+length = 0.3
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureProgress:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -3.96851, -2.97637 ), Vector2( -5.89252, -5.67203 ), Vector2( -10.3181, 3.96851 ), Vector2( -1.09861, 2.76981 ), Vector2( 3.57165, 9.4252 ), Vector2( -3.34507, -2.85866 ), Vector2( 11.3102, -0.992119 ) ]
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_left = -5.57135
+margin_top = -5.89577
+margin_right = 34.4286
+margin_bottom = 244.105
+max_value = 3.0
+step = 0.01
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 3 )
+fill_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/ProgressShake = SubResource( 1 )

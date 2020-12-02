@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://src/MainLevel.gd" type="Script" id=1]
 [ext_resource path="res://src/PlayerK.gd" type="Script" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://Menue/matchball_Title_red.png" type="Texture" id=27]
 [ext_resource path="res://Sprites/LEVEL1/Haeuser_dunkel.png" type="Texture" id=28]
 [ext_resource path="res://Sprites/LEVEL1/street.png" type="Texture" id=29]
+[ext_resource path="res://scenes/Progressbar.tscn" type="PackedScene" id=30]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 23.7809
@@ -49,8 +50,12 @@ height = 106.422
 radius = 35.134
 height = 76.5648
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 8, 110.632 )
+[sub_resource type="CapsuleShape2D" id=16]
+radius = 10.2781
+height = 186.791
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 11.3958, 196.98 )
 
 [sub_resource type="PhysicsMaterial" id=7]
 friction = 10.0
@@ -64,10 +69,10 @@ extents = Vector2( 777.901, 46.3899 )
 extents = Vector2( 378.875, 10 )
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 10, 451.657 )
+extents = Vector2( 110.615, 451.657 )
 
 [sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 747.203, 10 )
+extents = Vector2( 747.203, 94.7772 )
 
 [sub_resource type="Animation" id=12]
 resource_name = "Point1"
@@ -384,6 +389,8 @@ winscore = 2
 satzno = 3
 
 [node name="PlayerF" type="KinematicBody2D" parent="."]
+collision_layer = 17
+collision_mask = 17
 script = ExtResource( 5 )
 speed = 300
 
@@ -404,16 +411,6 @@ position = Vector2( 199.663, 546.748 )
 shape = SubResource( 2 )
 one_way_collision = true
 
-[node name="ProgressBar" type="ProgressBar" parent="PlayerF"]
-margin_left = 230.0
-margin_top = 520.0
-margin_right = 234.0
-margin_bottom = 534.0
-value = 50.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PlayerF"]
 position = Vector2( 720, 0 )
 stream = ExtResource( 17 )
@@ -429,7 +426,13 @@ attenuation = 0.07966
 position = Vector2( -1308.68, 10.8361 )
 occluder = SubResource( 3 )
 
+[node name="Progressbar" parent="PlayerF" instance=ExtResource( 30 )]
+position = Vector2( 171, 500 )
+scale = Vector2( 0.19, 0.19 )
+
 [node name="PlayerK" type="KinematicBody2D" parent="."]
+collision_layer = 17
+collision_mask = 17
 script = ExtResource( 2 )
 
 [node name="Collider" type="CollisionShape2D" parent="PlayerK"]
@@ -466,8 +469,16 @@ attenuation = 0.07966
 [node name="Netz" type="StaticBody2D" parent="."]
 
 [node name="Collider" type="CollisionShape2D" parent="Netz"]
-position = Vector2( 715, 529.756 )
-shape = SubResource( 6 )
+position = Vector2( 716.189, 540.459 )
+shape = SubResource( 16 )
+
+[node name="NetzPlayer" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="Playerwand" type="CollisionShape2D" parent="NetzPlayer"]
+position = Vector2( 716.135, 238.249 )
+shape = SubResource( 17 )
 
 [node name="Boden" type="StaticBody2D" parent="."]
 physics_material_override = SubResource( 7 )
@@ -491,15 +502,15 @@ shape = SubResource( 9 )
 [node name="WandL" type="StaticBody2D" parent="."]
 
 [node name="WandL" type="CollisionShape2D" parent="WandL"]
-position = Vector2( -10.7133, 186.566 )
+position = Vector2( -108.257, 186.566 )
 shape = SubResource( 10 )
 
 [node name="WandL2" type="CollisionShape2D" parent="WandL"]
-position = Vector2( 1451.3, 184.795 )
+position = Vector2( 1550.53, 184.795 )
 shape = SubResource( 10 )
 
 [node name="Decke" type="CollisionShape2D" parent="WandL"]
-position = Vector2( 721.814, -273.824 )
+position = Vector2( 724.334, -355.719 )
 shape = SubResource( 11 )
 
 [node name="Scoreboard" type="Control" parent="."]
@@ -610,7 +621,6 @@ visible = false
 position = Vector2( 1280, 28 )
 scale = Vector2( 0.29, 0.29 )
 frames = SubResource( 14 )
-frame = 1
 speed_scale = 0.3
 playing = true
 

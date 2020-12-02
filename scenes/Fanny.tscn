@@ -104,8 +104,8 @@ region_enabled = true
 region_rect = Rect2( 421.681, 20.085, 140, 290.969 )
 
 [node name="armR" type="Sprite" parent="Torso"]
-position = Vector2( -66.026, -106.264 )
-rotation = -0.00923039
+position = Vector2( -65.4324, -104.936 )
+rotation = -0.0153065
 z_index = 2
 texture = ExtResource( 1 )
 offset = Vector2( 0, 120 )
@@ -123,8 +123,7 @@ region_enabled = true
 region_rect = Rect2( 424.587, 336.908, 122, 335 )
 
 [node name="armL" type="Sprite" parent="Torso"]
-position = Vector2( 57.2559, -108.979 )
-rotation = -0.0186253
+position = Vector2( 57.2559, -108.348 )
 z_index = -1
 texture = ExtResource( 1 )
 offset = Vector2( 5, 130 )
@@ -146,7 +145,7 @@ region_enabled = true
 region_rect = Rect2( 91.876, 189.33, 123.338, 480 )
 
 [node name="head" type="Sprite" parent="Torso"]
-position = Vector2( -1.49398, -138.058 )
+position = Vector2( -1.23245, -136.616 )
 z_index = -1
 texture = ExtResource( 1 )
 offset = Vector2( 0, -60 )
@@ -165,6 +164,5 @@ anims/Winning = ExtResource( 6 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 23 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/playback = SubResource( 24 )
 parameters/conditions/is_on_floor() = false
