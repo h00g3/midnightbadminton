@@ -69,18 +69,11 @@ func Sad():
 
 func stare_at(point):
 	var angle = head.get_angle_to(point)
-	print("%s %s" % [side, angle])
 	var rotation = 0
-	if is_left():
-		if(angle < 0):
-			rotation = max(angle, MAX_ANGLE_LOOK_UP)
-		else:
-			rotation = min(angle, MAX_ANGLE_LOOK_DOWN)
+	if(angle < 0):
+		rotation = max(angle, MAX_ANGLE_LOOK_UP)
 	else:
-		if(angle > -1.5):
-			rotation = max(angle, -0.25)
-		else:
-			rotation = max(angle, -PI*0.75)
+		rotation = min(angle, MAX_ANGLE_LOOK_DOWN)
 	head.rotate(rotation)
 	
 #	if look_position.x < players[Player.Side.LEFT].get_body_position().x :

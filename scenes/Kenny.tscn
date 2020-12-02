@@ -101,8 +101,8 @@ region_enabled = true
 region_rect = Rect2( 365, 7, 215, 390 )
 
 [node name="armL" type="Sprite" parent="Torso"]
-position = Vector2( 74.4925, -94.3291 )
-rotation = -0.0350043
+position = Vector2( 73.2197, -91.7836 )
+rotation = -0.0210033
 z_index = -1
 texture = ExtResource( 1 )
 offset = Vector2( 26.249, 150 )
@@ -110,8 +110,8 @@ region_enabled = true
 region_rect = Rect2( 165.679, 0, 122.111, 387.364 )
 
 [node name="armR" type="Sprite" parent="Torso"]
-position = Vector2( -80.7773, -113.59 )
-rotation = 0.00359482
+position = Vector2( -80.7773, -112.317 )
+rotation = 0.00215697
 z_index = 2
 z_as_relative = false
 texture = ExtResource( 1 )
@@ -144,7 +144,7 @@ region_enabled = true
 region_rect = Rect2( 74, 239.846, 119, 449.154 )
 
 [node name="head" type="Sprite" parent="Torso"]
-position = Vector2( 2.6912, -186.611 )
+position = Vector2( 3.45131, -185.09 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, -70 )
 region_enabled = true

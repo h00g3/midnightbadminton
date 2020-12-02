@@ -20,13 +20,9 @@ func calculate_impulse(shuttle, player):
 func calculate_x_impulse(player):
 	var result = average_x_impulse
 	if player.is_moving_towards_net():
-		print("%s \t moving towards net %s" % [player.side, player.get_velocity()])
 		result = maximum_x_impulse
 	elif player.is_moving_away_from_net():
-		print("%s \t moving away from net %s" % [player.side, player.get_velocity()])
 		result = minimum_x_impulse
-	else:
-		print("%s \t no x movement %s" % [player.side, player.get_velocity()])
 	
 	if player.is_right():
 		result = -result
@@ -35,11 +31,8 @@ func calculate_x_impulse(player):
 	
 func calculate_y_impulse(player):
 	if player.is_jumping():
-		print("%s \t jumping %s" % [player.side, player.get_velocity()])
 		return smash_y_impulse
 	elif player.is_falling():
-		print("%s \t falling %s" % [player.side, player.get_velocity()])
 		return minimum_y_impulse
 	else:
-		print("%s \t on ground %s" % [player.side, player.get_velocity()])
 		return average_y_impulse
