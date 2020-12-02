@@ -35,7 +35,6 @@ scale = Vector2( 0.025, 0.025 )
 texture = ExtResource( 2 )
 
 [node name="Light2D" type="Light2D" parent="Sprite"]
-visible = false
 scale = Vector2( 20, 20 )
 texture = ExtResource( 6 )
 color = Color( 0.65098, 0.992157, 1, 1 )
@@ -46,6 +45,7 @@ shadow_filter = 1
 shadow_filter_smooth = 20.0
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
+visible = false
 light_mask = 2
 position = Vector2( 1171.28, 145.32 )
 rotation = 1.5708
@@ -85,7 +85,6 @@ color_ramp = ExtResource( 3 )
 stream = ExtResource( 5 )
 
 [node name="GlowParticles" type="CPUParticles2D" parent="."]
-visible = false
 amount = 33
 lifetime = 1.4
 randomness = 1.0

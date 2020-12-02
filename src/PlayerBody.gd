@@ -11,9 +11,9 @@ onready var state_machine = $Node2D/AnimationTree.get("parameters/playback")
 onready var player_sounds = $AudioStreamPlayer2D
 onready var racket_audio = $RacketAudioStreamPlayer2D
 
-var audio_attacks = Vector2(1,4)
-var audio_yays = Vector2(5,9)
-var audio_ojes = Vector2(10,14)
+var audio_attacks = Vector2(0,4)
+var audio_yays = Vector2(10,14)
+var audio_ojes = Vector2(15,19)
 var audio_schlaege = Vector2(0,6)
 
 onready var randomi = 0
@@ -48,7 +48,7 @@ func RacketAudio(start_tc, end_tc, length) :
 
 func Jump():
 	state_machine.travel("Jump")
-	PlayerAudio(audio_attacks.x, audio_attacks.y,0.5)
+	PlayerAudio(audio_attacks.x, audio_attacks.y, 0.5)
 
 func Walk():
 	if state_machine.get_current_node() != ("Walking"):

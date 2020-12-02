@@ -18,6 +18,8 @@ const SATZSPRITE = preload("res://scenes/SatzSprite.tscn")
 
 var formation = Vector2(5, 1)
 
+onready var night_mode_bool = false
+
 func _ready():
 	$PlayerK/Node2D.scale.x = -$PlayerK/Node2D.scale.x # Mirror Player
 	$Scoreboard/Time.connect("TIMEOVER", self, "_on_Timer_Timeout")
@@ -32,7 +34,10 @@ func add_player(name, physics_body, side):
 
 func add_shuttle():
 	if shuttle == null:
-		shuttle = load("res://scenes/Shuttle.tscn").instance()
+		if night_mode_bool == true :
+			shuttle = load("res://scenes/ShuttleNight.tscn").instance()
+		else :
+			shuttle = load("res://scenes/Shuttle.tscn").instance()
 
 func delete_shuttle():
 	if shuttle != null:
@@ -116,17 +121,31 @@ func shuttle_hit_ground(body, side):
 		service_side = side
 		shuttle_hit_ground = true
 
+func draw_matchball():
+	var scoreboard_matchball = get_node("Scoreboard/MatchballAnimatedSprite")
+	if players[Player.Side.LEFT].score > players[Player.Side.RIGHT].score :
+		scoreboard_matchball.position = Vector2(155,28)
+		scoreboard_matchball.visible = true
+	elif players[Player.Side.LEFT].score < players[Player.Side.RIGHT].score :
+		scoreboard_matchball.position = Vector2(1280,28)
+		scoreboard_matchball.visible = true
+	else:
+		scoreboard_matchball.visible = false
+
 func score(scoring_side):
 	score_animations(scoring_side)
 	var player = players[scoring_side]
 	var score = player.score()
+	draw_matchball()
 	$Scoreboard/StatusLabel.text = "Punkt für %s!" % player.name
 	
 	if score >= winscore:
 		if two_score_difference() :
 			win(player)
+			draw_matchball()
 	if player.get_score_satz() >= satzno :
 		total_win(player)
+		draw_matchball()
 
 func two_score_difference() :
 	var difference = players[Player.Side.LEFT].score - players[Player.Side.RIGHT].score
@@ -197,6 +216,21 @@ func total_win(player):
 	players[Player.Side.RIGHT].reset_all()
 	remove_satz_sprites()
 	add_base_satz_sprites()
+	if night_mode_bool :
+		night_mode(false)
+	else :
+		night_mode(true)
+
+func night_mode(trueorfalse) :
+	if trueorfalse :
+		$Background/AnimationPlayer.play("NightModeOn")
+		$MusicPlayer.play(0.0)
+	else :
+		$Background/AnimationPlayer.play_backwards("NightModeOn")
+		$MusicPlayer.stop()
+	
+	night_mode_bool = trueorfalse
+	return night_mode_bool
 
 func show_scores():
 	$Scoreboard/Fscore.text = str(players[Player.Side.LEFT].score)
@@ -242,4 +276,3 @@ func remove_satz_sprites():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	point_title.visible = false
 	name_title.visible = false
-	pass # Replace with function body.

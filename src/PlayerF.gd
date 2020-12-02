@@ -1,5 +1,4 @@
 # Player-Script Fanny (fast identisch mit Kennny)
-
 extends PlayerBody
 
 # Variable zum Einstellen in der Godot UI für die Gecchwindigkeit
