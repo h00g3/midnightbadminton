@@ -1,13 +1,13 @@
 extends PlayerBody
 
-export (int) var speed = 200
+export (int) var speed = 300
 
 const ACCELERATION : int = 30
 
 var jumpForce : int = 400
 var gravity : int = 1000
 
-onready var dashing = true
+var dashing = true
 
 func _physics_process(delta):
 	vel.x = 0
@@ -35,6 +35,9 @@ func _Steuerung(delta):
 	if Input.is_action_just_pressed("ui_right") and dashing :
 		vel.x += jumpForce
 		dashing = false
+		
+		
+		
 	# applying the velocity
 	vel.y += gravity * delta
 	vel = move_and_slide(vel, Vector2.UP)
