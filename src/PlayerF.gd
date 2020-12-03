@@ -13,8 +13,6 @@ const gravity : int = 1000
 # Doppelsprung-Kontrollvariable, Abschlag
 onready var doublejump_zaehler : bool = false
 
-#onready var racket = load("res://src/Racket.gd").new(Player.Side.LEFT)
-
 func _physics_process(delta):
 	vel.x = 0
 	_Steuerung(delta)

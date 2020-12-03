@@ -69,10 +69,11 @@ func _process(delta):
 	if(shuttle_hit_ground):
 		shuttle_on_ground(delta)
 	# do this only if a player is currently having their service
-	elif is_player_performing_service() and pressed_service():
+	elif is_player_performing_service() and released_service():
 		parent_shuttle_with_main_level()
 		shuttle.set_mode(RigidBody2D.MODE_RIGID)
-		shuttle.apply_central_impulse(Vector2(0,-20000))
+		var impulse = players[service_side].get_physics_body().get_service_impulse()
+		shuttle.apply_central_impulse(Vector2(0,impulse))
 	show_scores()
 	players_stare_at_shuttle()
 	
@@ -90,8 +91,8 @@ func is_player_performing_service():
 
 # checks if the service input pressed also matches the player currently
 # having their service
-func pressed_service():
-	return (Input.is_action_just_pressed("2_down") and service_side == Player.Side.LEFT) or (Input.is_action_just_pressed("ui_down") and service_side == Player.Side.RIGHT)
+func released_service():
+	return (Input.is_action_just_released("2_down") and service_side == Player.Side.LEFT) or (Input.is_action_just_released("ui_down") and service_side == Player.Side.RIGHT)
 
 func parent_shuttle_with_main_level():
 	var shuttle_position = shuttle.get_global_position()

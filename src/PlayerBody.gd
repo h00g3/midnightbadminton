@@ -5,6 +5,7 @@ class_name PlayerBody
 onready var racket = load("res://src/Racket.gd").new()
 #onready var progress_bar = load("res://scenes/Progressbar.tscn").new()
 onready var head = find_node("head")
+onready var progress_bar = find_node("Progressbar")
 const MAX_ANGLE_LOOK_UP = -0.75
 const MAX_ANGLE_LOOK_DOWN = 1
 
@@ -29,6 +30,9 @@ func set_side(_side):
 	
 func get_side():
 	return side
+	
+func get_service_impulse():
+	return progress_bar.get_value() * (-20000)
 
 func make_random_nr(von, bis) :
 	var rng = RandomNumberGenerator.new()

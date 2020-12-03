@@ -11,10 +11,13 @@ func _process(delta):
 	if Input.is_action_just_released(key_down):
 		duration = 0
 	
-	if duration >= 3 :
+	if duration >= 2 :
 		$AnimationPlayer.play("ProgressShake")
 	else:
 		$AnimationPlayer.stop()
 		
 	$TextureProgress.value = duration
 	print (duration)
+
+func get_value():
+	return $TextureProgress.value
