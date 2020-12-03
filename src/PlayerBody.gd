@@ -3,6 +3,7 @@ extends KinematicBody2D
 class_name PlayerBody
 
 onready var racket = load("res://src/Racket.gd").new()
+#onready var progress_bar = load("res://scenes/Progressbar.tscn").new()
 onready var head = find_node("head")
 const MAX_ANGLE_LOOK_UP = -0.75
 const MAX_ANGLE_LOOK_DOWN = 1

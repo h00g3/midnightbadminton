@@ -50,32 +50,31 @@ height = 106.422
 radius = 35.134
 height = 76.5648
 
-[sub_resource type="CapsuleShape2D" id=16]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 10.2781
 height = 186.791
 
-[sub_resource type="RectangleShape2D" id=17]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 11.3958, 196.98 )
 
-[sub_resource type="PhysicsMaterial" id=7]
+[sub_resource type="PhysicsMaterial" id=8]
 friction = 10.0
 bounce = 2.0
 absorbent = true
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 777.901, 46.3899 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 378.875, 10 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 110.615, 451.657 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 747.203, 94.7772 )
 
-[sub_resource type="Animation" id=12]
-resource_name = "Point1"
+[sub_resource type="Animation" id=13]
 length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite_oben:position")
@@ -126,8 +125,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "Totalwin1"
+[sub_resource type="Animation" id=14]
 length = 2.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite_oben:position")
@@ -178,7 +176,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 30 ), Vector2( -3.8147e-06, 62.109 ) ]
 }
 
-[sub_resource type="SpriteFrames" id=14]
+[sub_resource type="SpriteFrames" id=15]
 animations = [ {
 "frames": [ ExtResource( 26 ), ExtResource( 27 ) ],
 "loop": true,
@@ -186,8 +184,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=15]
-resource_name = "NightModeOn"
+[sub_resource type="Animation" id=16]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Light2D:energy")
@@ -429,6 +426,7 @@ occluder = SubResource( 3 )
 [node name="Progressbar" parent="PlayerF" instance=ExtResource( 30 )]
 position = Vector2( 171, 500 )
 scale = Vector2( 0.19, 0.19 )
+key_down = "2_down"
 
 [node name="PlayerK" type="KinematicBody2D" parent="."]
 collision_layer = 17
@@ -466,11 +464,16 @@ position = Vector2( 720, 0 )
 stream = ExtResource( 22 )
 attenuation = 0.07966
 
+[node name="Progressbar" parent="PlayerK" instance=ExtResource( 30 )]
+position = Vector2( 1130, 500 )
+scale = Vector2( 0.19, 0.19 )
+key_down = "ui_down"
+
 [node name="Netz" type="StaticBody2D" parent="."]
 
 [node name="Collider" type="CollisionShape2D" parent="Netz"]
 position = Vector2( 716.189, 540.459 )
-shape = SubResource( 16 )
+shape = SubResource( 6 )
 
 [node name="NetzPlayer" type="StaticBody2D" parent="."]
 collision_layer = 16
@@ -478,40 +481,40 @@ collision_mask = 16
 
 [node name="Playerwand" type="CollisionShape2D" parent="NetzPlayer"]
 position = Vector2( 716.135, 238.249 )
-shape = SubResource( 17 )
+shape = SubResource( 7 )
 
 [node name="Boden" type="StaticBody2D" parent="."]
-physics_material_override = SubResource( 7 )
+physics_material_override = SubResource( 8 )
 
 [node name="Collider" type="CollisionShape2D" parent="Boden"]
 position = Vector2( 698.146, 680.344 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="Links" type="Area2D" parent="Boden"]
 
 [node name="Collider" type="CollisionShape2D" parent="Boden/Links"]
 position = Vector2( 328.166, 643.094 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="Rechts" type="Area2D" parent="Boden"]
 
 [node name="Collider" type="CollisionShape2D" parent="Boden/Rechts"]
 position = Vector2( 1100, 643.094 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="WandL" type="StaticBody2D" parent="."]
 
 [node name="WandL" type="CollisionShape2D" parent="WandL"]
 position = Vector2( -108.257, 186.566 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="WandL2" type="CollisionShape2D" parent="WandL"]
 position = Vector2( 1550.53, 184.795 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="Decke" type="CollisionShape2D" parent="WandL"]
 position = Vector2( 724.334, -355.719 )
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 
 [node name="Scoreboard" type="Control" parent="."]
 margin_right = 40.0
@@ -613,14 +616,14 @@ position = Vector2( 1000, 62.109 )
 texture = ExtResource( 20 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Scoreboard/EventTitleContainer"]
-anims/Point1 = SubResource( 12 )
-anims/Totalwin1 = SubResource( 13 )
+anims/Point1 = SubResource( 13 )
+anims/Totalwin1 = SubResource( 14 )
 
 [node name="MatchballAnimatedSprite" type="AnimatedSprite" parent="Scoreboard"]
 visible = false
 position = Vector2( 1280, 28 )
 scale = Vector2( 0.29, 0.29 )
-frames = SubResource( 14 )
+frames = SubResource( 15 )
 speed_scale = 0.3
 playing = true
 
@@ -708,7 +711,7 @@ z_index = 6
 texture = ExtResource( 18 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
-anims/NightModeOn = SubResource( 15 )
+anims/NightModeOn = SubResource( 16 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 24 )
