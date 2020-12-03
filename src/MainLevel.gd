@@ -273,7 +273,6 @@ func add_satz_sprite(y, direction, pos, rot, scale, color) :
 func remove_satz_sprites():
 	var scoreboard = get_node("Scoreboard")
 	for child in scoreboard.get_children() :
-		print (child.get_name())
 		if child.get_name().begins_with("@SatzSprite") :
 			child.free()
 

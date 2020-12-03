@@ -37,6 +37,5 @@ func _on_Shuttle_body_entered(body):
 	
 	if body.get_name() == ("Boden") or ("Netz") :
 		shuttle_audio.play(make_random_nr(6, 10))
-		print (body.get_name())
 		yield(get_tree().create_timer(0.5), "timeout")
 		shuttle_audio.stop()

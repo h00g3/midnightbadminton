@@ -17,7 +17,6 @@ func _process(delta):
 		$AnimationPlayer.stop()
 		
 	$TextureProgress.value = duration
-	print (duration)
 
 func get_value():
 	return $TextureProgress.value
