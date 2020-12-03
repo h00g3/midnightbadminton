@@ -69,11 +69,15 @@ func _process(delta):
 	if(shuttle_hit_ground):
 		shuttle_on_ground(delta)
 	# do this only if a player is currently having their service
-	elif is_player_performing_service() and released_service():
-		parent_shuttle_with_main_level()
-		shuttle.set_mode(RigidBody2D.MODE_RIGID)
-		var impulse = players[service_side].get_physics_body().get_service_impulse()
-		shuttle.apply_central_impulse(Vector2(0,impulse))
+	elif is_player_performing_service():
+		players[service_side].get_physics_body().get_service_bar().visible = true
+		if released_service():
+			parent_shuttle_with_main_level()
+			shuttle.set_mode(RigidBody2D.MODE_RIGID)
+			var impulse = players[service_side].get_physics_body().get_service_impulse()
+			shuttle.apply_central_impulse(Vector2(0,impulse))
+			players[service_side].get_physics_body().get_service_bar().visible = false
+		
 	show_scores()
 	players_stare_at_shuttle()
 	

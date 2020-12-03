@@ -424,6 +424,7 @@ position = Vector2( -1308.68, 10.8361 )
 occluder = SubResource( 3 )
 
 [node name="Progressbar" parent="PlayerF" instance=ExtResource( 30 )]
+visible = false
 position = Vector2( 171, 500 )
 scale = Vector2( 0.19, 0.19 )
 key_down = "2_down"
@@ -465,6 +466,7 @@ stream = ExtResource( 22 )
 attenuation = 0.07966
 
 [node name="Progressbar" parent="PlayerK" instance=ExtResource( 30 )]
+visible = false
 position = Vector2( 1130, 500 )
 scale = Vector2( 0.19, 0.19 )
 key_down = "ui_down"

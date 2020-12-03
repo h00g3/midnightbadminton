@@ -30,7 +30,10 @@ func set_side(_side):
 	
 func get_side():
 	return side
-	
+
+func get_service_bar():
+	return progress_bar
+
 func get_service_impulse():
 	return progress_bar.get_value() * (-20000)
 
