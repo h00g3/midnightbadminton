@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Menue/Titleplusbuttons.png.jpg" type="Texture" id=1]
 [ext_resource path="res://scenes/Kenny.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Menue/NEW GAME.png" type="Texture" id=7]
 [ext_resource path="res://Menue/SEITENWECHSEL.png" type="Texture" id=8]
 [ext_resource path="res://Menue/Exit.png" type="Texture" id=9]
+[ext_resource path="res://Menue/CREDITS.png" type="Texture" id=10]
+[ext_resource path="res://Menue/credit_screen.png" type="Texture" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "flicker"
@@ -151,5 +153,24 @@ texture_hover = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextureButton4" type="TextureButton" parent="."]
+margin_left = 1289.1
+margin_top = 23.7841
+margin_right = 1415.1
+margin_bottom = 63.7841
+texture_normal = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CREDITS" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.882353 )
+position = Vector2( 721.078, 384.844 )
+z_index = 5
+texture = ExtResource( 11 )
+[connection signal="gui_input" from="." to="." method="_on_MainMenu_gui_input"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="TextureButton3" to="." method="_on_TextureButton3_pressed"]
+[connection signal="pressed" from="TextureButton4" to="." method="_on_TextureButton4_pressed"]

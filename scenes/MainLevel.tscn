@@ -411,7 +411,7 @@ one_way_collision = true
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PlayerF"]
 position = Vector2( 720, 0 )
 stream = ExtResource( 17 )
-volume_db = -3.0
+volume_db = -5.0
 attenuation = 0.07966
 
 [node name="RacketAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PlayerF"]
@@ -424,7 +424,6 @@ position = Vector2( -1308.68, 10.8361 )
 occluder = SubResource( 3 )
 
 [node name="Progressbar" parent="PlayerF" instance=ExtResource( 30 )]
-visible = false
 position = Vector2( 171, 500 )
 scale = Vector2( 0.19, 0.19 )
 key_down = "2_down"
@@ -466,7 +465,6 @@ stream = ExtResource( 22 )
 attenuation = 0.07966
 
 [node name="Progressbar" parent="PlayerK" instance=ExtResource( 30 )]
-visible = false
 position = Vector2( 1130, 500 )
 scale = Vector2( 0.19, 0.19 )
 key_down = "ui_down"
@@ -608,12 +606,10 @@ __meta__ = {
 }
 
 [node name="Sprite_oben" type="Sprite" parent="Scoreboard/EventTitleContainer"]
-visible = false
 position = Vector2( -1000, -23.938 )
 texture = ExtResource( 23 )
 
 [node name="Sprite_unten" type="Sprite" parent="Scoreboard/EventTitleContainer"]
-visible = false
 position = Vector2( 1000, 62.109 )
 texture = ExtResource( 20 )
 
@@ -658,6 +654,7 @@ shadow_filter = 3
 shadow_filter_smooth = 30.0
 
 [node name="SpriteLight" type="Sprite" parent="Background/Light2D2"]
+visible = false
 position = Vector2( -195.136, 48.3522 )
 scale = Vector2( 0.775167, 0.775167 )
 z_index = 6
@@ -686,6 +683,7 @@ position = Vector2( 0.902527, 0 )
 texture = ExtResource( 7 )
 
 [node name="Street" type="Sprite" parent="Background"]
+visible = false
 modulate = Color( 0.305882, 0.305882, 0.305882, 0 )
 texture = ExtResource( 29 )
 

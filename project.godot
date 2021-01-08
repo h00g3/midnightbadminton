@@ -39,6 +39,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Midnight Badminton"
+config/description="Fanny vs. Kenny - Midnight Badminton
+Ein Multiplayer-Ballspiel mit Physics, Basis zum Weiterentwickeln
+Enstanden in Rahmen der ORF-Filmproduktion \"Game Science\"
+Created by: Kenny Lang
+Drawings by: Johannes Gugerbauer
+Contributors: Christoph Czurda, Fanny Stapf, Sophie Alena"
 run/main_scene="res://scenes/MainMenu.tscn"
 config/icon="res://icon.png"
 
